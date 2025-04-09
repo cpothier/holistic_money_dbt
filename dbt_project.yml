@@ -1,0 +1,36 @@
+name: 'holistic_money_dw'
+version: '1.0.0'
+config-version: 2
+
+profile: 'holistic_money_dw'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  holistic_money_dw:
+    staging:
+      +materialized: view
+      +schema: staging
+    core:
+      +materialized: view
+      +schema: core
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  holistic_money_dw:
+    +schema: seed
+
+vars:
+  client_dataset: "default_client" 

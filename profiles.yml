@@ -1,0 +1,54 @@
+holistic_money_dw:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: "holistic-money"
+      dataset: "default_client"
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      
+    service_account:
+      type: bigquery
+      method: service-account
+      project: "holistic-money"
+      dataset: "default_client"
+      keyfile: "credentials/service-account.json"
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+
+    # 2. Application Default Credentials (for gcloud)
+    #    - Install Google Cloud SDK
+    #    - Run: gcloud auth application-default login
+    #    - Uncomment and update the following configuration:
+    # gcloud:
+    #   type: bigquery
+    #   method: application-default
+    #   project: "holistic-money"
+    #   dataset: "default_client"
+    #   threads: 4
+    #   timeout_seconds: 300
+    #   location: US
+    #   priority: interactive
+
+# Connection instructions:
+#
+# 1. OAuth (Interactive):
+#    - Install Google Cloud SDK: https://cloud.google.com/sdk/docs/install
+#    - Run: gcloud auth application-default login
+#    - Use the 'dev' profile
+#
+# 2. Service Account (Automated):
+#    - Create service account with BigQuery Admin role
+#    - Download JSON key file
+#    - Use the 'service_account' profile
+#
+# 3. Application Default (gcloud):
+#    - Install Google Cloud SDK
+#    - Run: gcloud auth application-default login
+#    - Use the 'gcloud' profile 
