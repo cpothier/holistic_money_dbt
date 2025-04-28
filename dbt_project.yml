@@ -1,6 +1,8 @@
 name: 'holistic_money_dw'
 version: '1.0.0'
 config-version: 2
+dbt-cloud:
+    project-id: 70471823400690
 
 profile: 'holistic_money_dw'
 

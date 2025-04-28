@@ -4,13 +4,13 @@ import subprocess
 import json
 
 # Use environment variables for the client and project
-os.environ['DBT_CLIENT_DATASET'] = 'austin_lifestyler'
+os.environ['DBT_CLIENT_DATASET'] = 'bb_design'
 os.environ['DBT_BIGQUERY_PROJECT'] = 'holistic-money'
 
 # Clean URL
-url = "https://docs.google.com/spreadsheets/d/1SHBAJZ9xect4kwLrGTeH2GZilLYLmbQQQDwUo-BBZI4"
+url = "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc"
 # Don't escape the exclamation mark as BigQuery doesn't accept it
-sheet_range = "Budget Summary!A4:AS69"
+sheet_range = "Budget Summary!A4:AS80"
 
 print(f"Running dbt with URL: {url}")
 

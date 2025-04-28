@@ -30,6 +30,8 @@ SELECT
     (CASE WHEN parent_account.Name is NOT NULL THEN parent_account.Name ELSE sub_account.AccountType END) as parent_account,
     u.sub_account as sub_account,
     u.child_account,
+    sub_account.Classification as classification,
+    sub_account.AccountType as account_type,
     u.budget_date,
     u.budget_amount
 FROM Unpivoted u

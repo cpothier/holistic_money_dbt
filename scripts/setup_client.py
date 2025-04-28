@@ -80,7 +80,7 @@ def run_command(cmd, env=None, check=True):
         logging.error(f"Error running command: {str(e)}")
         raise
 
-def create_debug_script(budget_sheet_url, sheet_range):
+def create_debug_script(budget_sheet_url, sheet_range, client, project):
     """Create a debug script that we know works"""
     # Don't escape the exclamation mark - BigQuery doesn't like it
     # Just use the sheet range as is
@@ -96,8 +96,8 @@ import subprocess
 import json
 
 # Use environment variables for the client and project
-os.environ['DBT_CLIENT_DATASET'] = 'austin_lifestyler'
-os.environ['DBT_BIGQUERY_PROJECT'] = 'holistic-money'
+os.environ['DBT_CLIENT_DATASET'] = '{client}'
+os.environ['DBT_BIGQUERY_PROJECT'] = '{project}'
 
 # Clean URL
 url = "{budget_sheet_url}"
@@ -267,7 +267,7 @@ def main():
     
     # Step 1: Create external Google Sheets table using the debug script that we know works
     logging.info(f"Setting up budget template for client {args.client} using debug script...")
-    debug_script = create_debug_script(clean_url, args.sheet_range)
+    debug_script = create_debug_script(clean_url, args.sheet_range, args.client, args.project)
     
     if not args.dry_run:
         try:

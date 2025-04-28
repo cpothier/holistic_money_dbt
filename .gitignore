@@ -26,6 +26,7 @@ var/
 # dbt
 target/
 dbt_packages/
+credentials/
 logs/
 .user.yml
 

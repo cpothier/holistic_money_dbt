@@ -433,3 +433,999 @@
 2025-04-08 09:53:39,763 - INFO - STDOUT: [0m14:53:38
 2025-04-08 09:53:39,763 - INFO - STDOUT: [0m14:53:38  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
 2025-04-08 09:53:39,763 - INFO - Client austin_lifestyler setup complete!
+2025-04-14 15:10:54,648 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/1FSeW50ARtZ-j1jdxahpaF7EobejNbM_cc7NclhdNsF4
+2025-04-14 15:10:54,649 - INFO - Setting up client golden_hour in project holistic-money
+2025-04-14 15:10:54,649 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-14 15:10:54,649 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-14 15:10:54,649 - INFO - Updating dbt profile with correct service account path
+2025-04-14 15:10:54,649 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-14 15:10:54,678 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-14 15:10:54,682 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-14 15:10:54,683 - INFO - Setting up budget template for client golden_hour using debug script...
+2025-04-14 15:10:54,684 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-14 15:11:06,317 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/1FSeW50ARtZ-j1jdxahpaF7EobejNbM_cc7NclhdNsF4
+2025-04-14 15:11:06,324 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1FSeW50ARtZ-j1jdxahpaF7EobejNbM_cc7NclhdNsF4", "sheet_range": "Budget Summary!A4:AS91"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:10:57  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122a5ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122cc250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122cc910>]}
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:10:57  Running with dbt=1.9.3
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:10:57  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'True', 'version_check': 'True', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'profiles_dir': '/Users/craigpothier/.dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1FSeW50ARtZ-j1jdxahpaF7EobejNbM_cc7NclhdNsF4", "sheet_range": "Budget Summary!A4:AS91"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119652290>]}
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc4c550>]}
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  Registered adapter: bigquery=1.9.1
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  Unable to do partial parsing because profile has changed
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:01  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111d61ed0>]}
+2025-04-14 15:11:06,325 - INFO - STDOUT: STDOUT: [0m20:11:03  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 15:11:06,326 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-14 15:11:06,326 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-14 15:11:06,326 - INFO - STDOUT: STDOUT: [0m20:11:03  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a132690>]}
+2025-04-14 15:11:06,326 - INFO - STDOUT: STDOUT: [0m20:11:03  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a1563d0>]}
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  Found 7 models, 494 macros
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '20a6fa60-e2f6-4a1f-a2b7-d25ac2f8d350', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a17e2d0>]}
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: [0m20:11:03  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT:
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT:
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.austin_lifestyler.budget_template`
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/1FSeW50ARtZ-j1jdxahpaF7EobejNbM_cc7NclhdNsF4'],
+2025-04-14 15:11:06,327 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS91',
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: );
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT:
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT:
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:03  Opening a new connection, currently in state init
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:04  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:cc9238cc-4acb-4e7e-812d-9fc0975c3ca4&page=queryresults
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 8.128735, "process_in_blocks": "0", "process_kernel_time": 0.723479, "process_mem_max_rss": "202604544", "process_out_blocks": "0", "process_user_time": 3.904172}
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Command `dbt run-operation` succeeded at 15:11:05.479047 after 8.13 seconds
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10db67b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a2c8c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a155110>]}
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  Flushing usage events
+2025-04-14 15:11:06,328 - INFO - STDOUT: STDOUT: [0m20:11:05  An error was encountered while trying to flush usage events
+2025-04-14 15:11:06,328 - INFO - STDOUT: Command finished with return code: 0
+2025-04-14 15:11:06,329 - INFO - Enabling staging model...
+2025-04-14 15:11:06,329 - INFO - Staging model enabled successfully
+2025-04-14 15:11:06,330 - INFO - Running dbt models for client golden_hour...
+2025-04-14 15:11:06,330 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-14 15:11:08,284 - INFO - STDOUT: [0m20:11:08  Running with dbt=1.9.3
+2025-04-14 15:11:26,881 - INFO - STDOUT: [0m20:11:09  Registered adapter: bigquery=1.9.1
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:09  Unable to do partial parsing because profile has changed
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:11  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 15:11:26,882 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-14 15:11:26,882 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:11  Found 7 models, 494 macros
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:11
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:11  Concurrency: 4 threads (target='service_account')
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:11
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:13  1 of 7 START sql table model golden_hour_marts.financial_comments .............. [RUN]
+2025-04-14 15:11:26,882 - INFO - STDOUT: [0m20:11:13  2 of 7 START sql view model golden_hour_core.p_l_view .......................... [RUN]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:13  3 of 7 START sql view model golden_hour_staging.stg_budget_template ............ [RUN]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:15  2 of 7 OK created sql view model golden_hour_core.p_l_view ..................... [[32mCREATE VIEW (0 processed)[0m in 1.38s]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:15  3 of 7 OK created sql view model golden_hour_staging.stg_budget_template ....... [[32mCREATE VIEW (0 processed)[0m in 1.38s]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:15  4 of 7 START sql view model golden_hour_core.budget_transformed ................ [RUN]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:16  4 of 7 OK created sql view model golden_hour_core.budget_transformed ........... [[32mCREATE VIEW (0 processed)[0m in 1.09s]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:17  1 of 7 OK created sql table model golden_hour_marts.financial_comments ......... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.32s]
+2025-04-14 15:11:26,883 - INFO - STDOUT: [0m20:11:17  5 of 7 START sql table model golden_hour_marts.materialized_pl_budget_blend .... [RUN]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:23  5 of 7 OK created sql table model golden_hour_marts.materialized_pl_budget_blend  [[32mCREATE TABLE (3.4k rows, 2.0 MiB processed)[0m in 6.91s]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:23  6 of 7 START sql view model golden_hour_marts.pl_budget_with_comments .......... [RUN]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:24  6 of 7 OK created sql view model golden_hour_marts.pl_budget_with_comments ..... [[32mCREATE VIEW (0 processed)[0m in 0.98s]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:24  7 of 7 START sql view model golden_hour_marts.profit_by_month .................. [RUN]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26  7 of 7 OK created sql view model golden_hour_marts.profit_by_month ............. [[32mCREATE VIEW (0 processed)[0m in 1.11s]
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 14.98 seconds (14.98s).
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26  [32mCompleted successfully[0m
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26
+2025-04-14 15:11:26,884 - INFO - STDOUT: [0m20:11:26  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+2025-04-14 15:11:26,885 - INFO - Client golden_hour setup complete!
+2025-04-14 17:42:41,937 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE
+2025-04-14 17:42:41,937 - INFO - Setting up client child_life_on_call in project holistic-money
+2025-04-14 17:42:41,937 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-14 17:42:41,937 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-14 17:42:41,938 - INFO - Updating dbt profile with correct service account path
+2025-04-14 17:42:41,938 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-14 17:42:41,967 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-14 17:42:41,972 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-14 17:42:41,972 - INFO - Setting up budget template for client child_life_on_call using debug script...
+2025-04-14 17:42:41,973 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-14 17:42:53,103 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE
+2025-04-14 17:42:53,110 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE", "sheet_range": "Budget Summary!A4:AS90"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:44  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b3d150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b9ba10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ba3a50>]}
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:44  Running with dbt=1.9.3
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:44  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/craigpothier/.dbt', 'debug': 'True', 'version_check': 'True', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE", "sheet_range": "Budget Summary!A4:AS90"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c6e5710>]}
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10247c590>]}
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  Registered adapter: bigquery=1.9.1
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  Unable to do partial parsing because profile has changed
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:48  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104656110>]}
+2025-04-14 17:42:53,111 - INFO - STDOUT: STDOUT: [0m22:42:49  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cab3b10>]}
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c8ef250>]}
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Found 7 models, 494 macros
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'aad6017d-f1ff-458d-8213-a7eb220c4f2a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cb09d50>]}
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:49  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: [0m22:42:50  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT:
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT:
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.austin_lifestyler.budget_template`
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-14 17:42:53,112 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE'],
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS90',
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: );
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT:
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT:
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:50  Opening a new connection, currently in state init
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:51  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:c9abbe95-ef10-41da-949e-8586dbd348bb&page=queryresults
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 7.5109468, "process_in_blocks": "0", "process_kernel_time": 0.734168, "process_mem_max_rss": "200769536", "process_out_blocks": "0", "process_user_time": 4.004257}
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Command `dbt run-operation` succeeded at 17:42:52.224810 after 7.51 seconds
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cba7fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10049fcd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c972290>]}
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  Flushing usage events
+2025-04-14 17:42:53,113 - INFO - STDOUT: STDOUT: [0m22:42:52  An error was encountered while trying to flush usage events
+2025-04-14 17:42:53,114 - INFO - STDOUT: Command finished with return code: 0
+2025-04-14 17:42:53,114 - INFO - Enabling staging model...
+2025-04-14 17:42:53,115 - INFO - Staging model enabled successfully
+2025-04-14 17:42:53,115 - INFO - Running dbt models for client child_life_on_call...
+2025-04-14 17:42:53,115 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-14 17:42:54,756 - INFO - STDOUT: [0m22:42:54  Running with dbt=1.9.3
+2025-04-14 17:43:07,660 - INFO - STDOUT: [0m22:42:56  Registered adapter: bigquery=1.9.1
+2025-04-14 17:43:07,662 - INFO - STDOUT: [0m22:42:56  Unable to do partial parsing because profile has changed
+2025-04-14 17:43:07,662 - INFO - STDOUT: [0m22:42:57  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 17:43:07,662 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-14 17:43:07,662 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-14 17:43:07,662 - INFO - STDOUT: [0m22:42:57  Found 7 models, 494 macros
+2025-04-14 17:43:07,662 - INFO - STDOUT: [0m22:42:57
+2025-04-14 17:43:07,662 - INFO - STDOUT: [0m22:42:57  Concurrency: 4 threads (target='service_account')
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:42:57
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:01  1 of 7 START sql table model child_life_on_call_marts.financial_comments ....... [RUN]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:01  2 of 7 START sql view model child_life_on_call_core.p_l_view ................... [RUN]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:01  3 of 7 START sql view model child_life_on_call_staging.stg_budget_template ..... [RUN]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:02  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:bd5f76c2-aaad-43ca-8896-00dca97b204b&page=queryresults
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:02  3 of 7 ERROR creating sql view model child_life_on_call_staging.stg_budget_template  [[31mERROR[0m in 0.91s]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:02  4 of 7 SKIP relation child_life_on_call_core.budget_transformed ................ [[33mSKIP[0m]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:04  2 of 7 OK created sql view model child_life_on_call_core.p_l_view .............. [[32mCREATE VIEW (0 processed)[0m in 2.60s]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06  1 of 7 OK created sql table model child_life_on_call_marts.financial_comments .. [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 5.17s]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06  5 of 7 SKIP relation child_life_on_call_marts.materialized_pl_budget_blend ..... [[33mSKIP[0m]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06  6 of 7 SKIP relation child_life_on_call_marts.pl_budget_with_comments .......... [[33mSKIP[0m]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06  7 of 7 SKIP relation child_life_on_call_marts.profit_by_month .................. [[33mSKIP[0m]
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06
+2025-04-14 17:43:07,663 - INFO - STDOUT: [0m22:43:06  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 9.17 seconds (9.17s).
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06    Database Error in model stg_budget_template (models/staging/stg_budget_template.sql)
+2025-04-14 17:43:07,664 - INFO - STDOUT: Not found: Table holistic-money:child_life_on_call.budget_template was not found in location US
+2025-04-14 17:43:07,664 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/staging/stg_budget_template.sql
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06
+2025-04-14 17:43:07,664 - INFO - STDOUT: [0m22:43:06  Done. PASS=2 WARN=0 ERROR=1 SKIP=4 TOTAL=7
+2025-04-14 17:43:07,664 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-14 17:43:07,664 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-14 17:43:07,664 - ERROR - Failed to run dbt models
+2025-04-14 17:52:34,142 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE
+2025-04-14 17:52:34,143 - INFO - Setting up client child_life_on_call in project holistic-money
+2025-04-14 17:52:34,143 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-14 17:52:34,143 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-14 17:52:34,143 - INFO - Updating dbt profile with correct service account path
+2025-04-14 17:52:34,143 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-14 17:52:34,171 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-14 17:52:34,177 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-14 17:52:34,177 - INFO - Setting up budget template for client child_life_on_call using debug script...
+2025-04-14 17:52:34,178 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-14 17:52:42,067 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE
+2025-04-14 17:52:42,074 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE", "sheet_range": "Budget Summary!A4:AS90"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-14 17:52:42,074 - INFO - STDOUT: STDOUT: [0m22:52:36  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ee29810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eeac250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eeacb50>]}
+2025-04-14 17:52:42,074 - INFO - STDOUT: STDOUT: [0m22:52:36  Running with dbt=1.9.3
+2025-04-14 17:52:42,074 - INFO - STDOUT: STDOUT: [0m22:52:36  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/craigpothier/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'version_check': 'True', 'debug': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE", "sheet_range": "Budget Summary!A4:AS90"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+2025-04-14 17:52:42,075 - INFO - STDOUT: STDOUT: [0m22:52:38  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e4106a1c-2a46-4b5f-8a33-811820eccd20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1168533d0>]}
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e4106a1c-2a46-4b5f-8a33-811820eccd20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c788ad0>]}
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Registered adapter: bigquery=1.9.1
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Partial parsing enabled, no changes found, skipping parsing
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e4106a1c-2a46-4b5f-8a33-811820eccd20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x116b30950>]}
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e4106a1c-2a46-4b5f-8a33-811820eccd20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1167a8d90>]}
+2025-04-14 17:52:42,076 - INFO - STDOUT: STDOUT: [0m22:52:38  Found 7 models, 494 macros
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: [0m22:52:38  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e4106a1c-2a46-4b5f-8a33-811820eccd20', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x116ae95d0>]}
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: [0m22:52:38  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: [0m22:52:38  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT:
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT:
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.child_life_on_call.budget_template`
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/1yl9IRe-3-m3v_g_a2sMF9fkwGoNV4T_9vhinXSX_tgE'],
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS90',
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-14 17:52:42,077 - INFO - STDOUT: STDOUT: );
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT:
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT:
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:38  Opening a new connection, currently in state init
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:39  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:e842d615-cddf-4cd9-8857-898b5c451b9e&page=queryresults
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.790544, "process_in_blocks": "0", "process_kernel_time": 0.711075, "process_mem_max_rss": "196321280", "process_out_blocks": "0", "process_user_time": 3.024788}
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Command `dbt run-operation` succeeded at 17:52:41.043494 after 4.79 seconds
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ee8f8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ee8f750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1167aadd0>]}
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  Flushing usage events
+2025-04-14 17:52:42,078 - INFO - STDOUT: STDOUT: [0m22:52:41  An error was encountered while trying to flush usage events
+2025-04-14 17:52:42,078 - INFO - STDOUT: Command finished with return code: 0
+2025-04-14 17:52:42,079 - INFO - Enabling staging model...
+2025-04-14 17:52:42,079 - INFO - Staging model enabled successfully
+2025-04-14 17:52:42,079 - INFO - Running dbt models for client child_life_on_call...
+2025-04-14 17:52:42,079 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-14 17:52:43,825 - INFO - STDOUT: [0m22:52:43  Running with dbt=1.9.3
+2025-04-14 17:53:00,744 - INFO - STDOUT: [0m22:52:44  Registered adapter: bigquery=1.9.1
+2025-04-14 17:53:00,745 - INFO - STDOUT: [0m22:52:45  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-14 17:53:00,746 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-14 17:53:00,746 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:45  Found 7 models, 494 macros
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:45
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:45  Concurrency: 4 threads (target='service_account')
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:45
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:49  1 of 7 START sql table model child_life_on_call_marts.financial_comments ....... [RUN]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:49  2 of 7 START sql view model child_life_on_call_core.p_l_view ................... [RUN]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:49  3 of 7 START sql view model child_life_on_call_staging.stg_budget_template ..... [RUN]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:50  2 of 7 OK created sql view model child_life_on_call_core.p_l_view .............. [[32mCREATE VIEW (0 processed)[0m in 1.51s]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:50  3 of 7 OK created sql view model child_life_on_call_staging.stg_budget_template  [[32mCREATE VIEW (0 processed)[0m in 1.51s]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:50  4 of 7 START sql view model child_life_on_call_core.budget_transformed ......... [RUN]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:51  4 of 7 OK created sql view model child_life_on_call_core.budget_transformed .... [[32mCREATE VIEW (0 processed)[0m in 1.04s]
+2025-04-14 17:53:00,746 - INFO - STDOUT: [0m22:52:52  1 of 7 OK created sql table model child_life_on_call_marts.financial_comments .. [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.22s]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:52  5 of 7 START sql table model child_life_on_call_marts.materialized_pl_budget_blend  [RUN]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:57  5 of 7 OK created sql table model child_life_on_call_marts.materialized_pl_budget_blend  [[32mCREATE TABLE (2.2k rows, 1.3 MiB processed)[0m in 4.79s]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:57  6 of 7 START sql view model child_life_on_call_marts.pl_budget_with_comments ... [RUN]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:58  6 of 7 OK created sql view model child_life_on_call_marts.pl_budget_with_comments  [[32mCREATE VIEW (0 processed)[0m in 0.89s]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:58  7 of 7 START sql view model child_life_on_call_marts.profit_by_month ........... [RUN]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59  7 of 7 OK created sql view model child_life_on_call_marts.profit_by_month ...... [[32mCREATE VIEW (0 processed)[0m in 1.67s]
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 14.39 seconds (14.39s).
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59  [32mCompleted successfully[0m
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59
+2025-04-14 17:53:00,747 - INFO - STDOUT: [0m22:52:59  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+2025-04-14 17:53:00,748 - INFO - Client child_life_on_call setup complete!
+2025-04-21 18:33:44,857 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:33:44,857 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:33:44,857 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:33:44,857 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:33:44,857 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:33:44,857 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:33:44,887 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:33:44,892 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:33:44,892 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:33:44,893 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:33:53,556 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:33:53,563 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS69"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:33:53,563 - INFO - STDOUT: STDOUT: [0m23:33:47  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc53f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc5bed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc5bfd0>]}
+2025-04-21 18:33:53,563 - INFO - STDOUT: STDOUT: [0m23:33:47  Running with dbt=1.9.3
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:47  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/craigpothier/.dbt', 'debug': 'True', 'version_check': 'True', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS69"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '361c911d-5c30-408c-9c84-10c4439e81a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1176eb110>]}
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '361c911d-5c30-408c-9c84-10c4439e81a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d554ed0>]}
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  Registered adapter: bigquery=1.9.1
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  Partial parsing enabled, no changes found, skipping parsing
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: [0m23:33:49  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:33:53,564 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '361c911d-5c30-408c-9c84-10c4439e81a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1179306d0>]}
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '361c911d-5c30-408c-9c84-10c4439e81a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1175f0c50>]}
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Found 7 models, 494 macros
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '361c911d-5c30-408c-9c84-10c4439e81a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f7716d0>]}
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: [0m23:33:49  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT:
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT:
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:33:53,565 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS69',
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT:
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT:
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:49  Opening a new connection, currently in state init
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:50  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:d65a3f69-bb4a-4b8e-ae67-8b424678cb3e&page=queryresults
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 5.499709, "process_in_blocks": "0", "process_kernel_time": 0.787458, "process_mem_max_rss": "196583424", "process_out_blocks": "0", "process_user_time": 3.095618}
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Command `dbt run-operation` succeeded at 18:33:52.669412 after 5.50 seconds
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc5a790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fc5b990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1175f1f50>]}
+2025-04-21 18:33:53,566 - INFO - STDOUT: STDOUT: [0m23:33:52  Flushing usage events
+2025-04-21 18:33:53,567 - INFO - STDOUT: STDOUT: [0m23:33:53  An error was encountered while trying to flush usage events
+2025-04-21 18:33:53,567 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:33:53,567 - INFO - Enabling staging model...
+2025-04-21 18:33:53,568 - INFO - Staging model enabled successfully
+2025-04-21 18:33:53,568 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:33:53,568 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:33:55,142 - INFO - STDOUT: [0m23:33:55  Running with dbt=1.9.3
+2025-04-21 18:34:12,428 - INFO - STDOUT: [0m23:33:56  Registered adapter: bigquery=1.9.1
+2025-04-21 18:34:12,429 - INFO - STDOUT: [0m23:33:56  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:34:12,430 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:34:12,430 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:56  Found 7 models, 494 macros
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:56
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:56  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:56
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:58  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:58  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:33:58  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:34:12,430 - INFO - STDOUT: [0m23:34:00  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.30s]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:00  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.33s]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:00  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:01  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.37s]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:01  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.06s]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:01  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:08  5 of 7 OK created sql table model bb_design_marts.materialized_pl_budget_blend . [[32mCREATE TABLE (947.0 rows, 320.6 KiB processed)[0m in 6.96s]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:08  6 of 7 START sql view model bb_design_marts.pl_budget_with_comments ............ [RUN]
+2025-04-21 18:34:12,431 - INFO - STDOUT: [0m23:34:09  6 of 7 OK created sql view model bb_design_marts.pl_budget_with_comments ....... [[32mCREATE VIEW (0 processed)[0m in 1.15s]
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:09  7 of 7 START sql view model bb_design_marts.profit_by_month .................... [RUN]
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11  7 of 7 OK created sql view model bb_design_marts.profit_by_month ............... [[32mCREATE VIEW (0 processed)[0m in 1.44s]
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 14.78 seconds (14.78s).
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11  [32mCompleted successfully[0m
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11
+2025-04-21 18:34:12,432 - INFO - STDOUT: [0m23:34:11  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+2025-04-21 18:34:12,432 - INFO - Client bb_design setup complete!
+2025-04-21 18:35:39,398 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:35:39,399 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:35:39,399 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:35:39,399 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:35:39,399 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:35:39,399 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:35:39,425 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:35:39,429 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:35:39,429 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:35:39,430 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:35:47,645 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:35:47,653 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:35:47,653 - INFO - STDOUT: STDOUT: [0m23:35:41  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a55d190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5e0390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5e0cd0>]}
+2025-04-21 18:35:47,653 - INFO - STDOUT: STDOUT: [0m23:35:41  Running with dbt=1.9.3
+2025-04-21 18:35:47,653 - INFO - STDOUT: STDOUT: [0m23:35:41  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'debug': 'True', 'profiles_dir': '/Users/craigpothier/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:43  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5949c03c-536a-4ad9-a576-b574ae2d8194', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11193bcd0>]}
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:43  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5949c03c-536a-4ad9-a576-b574ae2d8194', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ebca50>]}
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:43  Registered adapter: bigquery=1.9.1
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  Partial parsing enabled, no changes found, skipping parsing
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5949c03c-536a-4ad9-a576-b574ae2d8194', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11222bd50>]}
+2025-04-21 18:35:47,654 - INFO - STDOUT: STDOUT: [0m23:35:44  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5949c03c-536a-4ad9-a576-b574ae2d8194', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112016410>]}
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  Found 7 models, 494 macros
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5949c03c-536a-4ad9-a576-b574ae2d8194', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a59eb50>]}
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: [0m23:35:44  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT:
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT:
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 18:35:47,655 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT:
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT:
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:44  Opening a new connection, currently in state init
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:45  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:64c62be6-a5ec-41e9-8545-06e4925bf345&page=queryresults
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.7071366, "process_in_blocks": "0", "process_kernel_time": 0.785147, "process_mem_max_rss": "195223552", "process_out_blocks": "0", "process_user_time": 3.160976}
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Command `dbt run-operation` succeeded at 18:35:46.447527 after 4.71 seconds
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5c3f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5c0b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10602bcd0>]}
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:46  Flushing usage events
+2025-04-21 18:35:47,656 - INFO - STDOUT: STDOUT: [0m23:35:47  An error was encountered while trying to flush usage events
+2025-04-21 18:35:47,656 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:35:47,657 - INFO - Enabling staging model...
+2025-04-21 18:35:47,658 - INFO - Staging model enabled successfully
+2025-04-21 18:35:47,658 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:35:47,658 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:35:49,321 - INFO - STDOUT: [0m23:35:49  Running with dbt=1.9.3
+2025-04-21 18:36:06,319 - INFO - STDOUT: [0m23:35:50  Registered adapter: bigquery=1.9.1
+2025-04-21 18:36:06,319 - INFO - STDOUT: [0m23:35:50  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:36:06,320 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:36:06,320 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:50  Found 7 models, 494 macros
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:50
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:50  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:50
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:52  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:52  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:52  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:54  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.23s]
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:54  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:36:06,320 - INFO - STDOUT: [0m23:35:54  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.38s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:35:55  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.04s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:35:56  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.30s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:35:56  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:03  5 of 7 OK created sql table model bb_design_marts.materialized_pl_budget_blend . [[32mCREATE TABLE (947.0 rows, 338.0 KiB processed)[0m in 7.00s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:03  6 of 7 START sql view model bb_design_marts.pl_budget_with_comments ............ [RUN]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:04  6 of 7 OK created sql view model bb_design_marts.pl_budget_with_comments ....... [[32mCREATE VIEW (0 processed)[0m in 1.14s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:04  7 of 7 START sql view model bb_design_marts.profit_by_month .................... [RUN]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05  7 of 7 OK created sql view model bb_design_marts.profit_by_month ............... [[32mCREATE VIEW (0 processed)[0m in 1.13s]
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 14.63 seconds (14.63s).
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05  [32mCompleted successfully[0m
+2025-04-21 18:36:06,321 - INFO - STDOUT: [0m23:36:05
+2025-04-21 18:36:06,322 - INFO - STDOUT: [0m23:36:05  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+2025-04-21 18:36:06,322 - INFO - Client bb_design setup complete!
+2025-04-21 18:49:04,718 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:49:04,719 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:49:04,719 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:49:04,719 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:49:04,719 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:49:04,719 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:49:04,751 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:49:04,756 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:49:04,756 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:49:04,757 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:49:12,428 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:49:12,435 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:49:12,435 - INFO - STDOUT: STDOUT: [0m23:49:07  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10add83d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ae3ff50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ae5cc50>]}
+2025-04-21 18:49:12,435 - INFO - STDOUT: STDOUT: [0m23:49:07  Running with dbt=1.9.3
+2025-04-21 18:49:12,435 - INFO - STDOUT: STDOUT: [0m23:49:07  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/craigpothier/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'debug': 'True', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:08  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '62ef85b5-edbc-4245-83c8-73e1ae68f8f5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ae77350>]}
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:08  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '62ef85b5-edbc-4245-83c8-73e1ae68f8f5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108718910>]}
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:08  Registered adapter: bigquery=1.9.1
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  Partial parsing: updated file: holistic_money_dw://models/marts/pl_budget_with_comments.sql
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  Partial parsing: updated file: holistic_money_dw://models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '62ef85b5-edbc-4245-83c8-73e1ae68f8f5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11293f5d0>]}
+2025-04-21 18:49:12,436 - INFO - STDOUT: STDOUT: [0m23:49:09  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '62ef85b5-edbc-4245-83c8-73e1ae68f8f5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112cda690>]}
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  Found 7 models, 494 macros
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '62ef85b5-edbc-4245-83c8-73e1ae68f8f5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112846d50>]}
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: [0m23:49:09  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT:
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT:
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:49:12,437 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT:
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT:
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:09  Opening a new connection, currently in state init
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:10  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:cdd62c91-8737-4fbd-8eda-d49a8a14688e&page=queryresults
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.6110034, "process_in_blocks": "0", "process_kernel_time": 0.715992, "process_mem_max_rss": "200024064", "process_out_blocks": "0", "process_user_time": 3.218361}
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Command `dbt run-operation` succeeded at 18:49:11.544914 after 4.61 seconds
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10673bd50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112ad95d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112b22f10>]}
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:11  Flushing usage events
+2025-04-21 18:49:12,438 - INFO - STDOUT: STDOUT: [0m23:49:12  An error was encountered while trying to flush usage events
+2025-04-21 18:49:12,438 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:49:12,438 - INFO - Enabling staging model...
+2025-04-21 18:49:12,439 - INFO - Staging model enabled successfully
+2025-04-21 18:49:12,439 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:49:12,439 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:49:14,457 - INFO - STDOUT: [0m23:49:14  Running with dbt=1.9.3
+2025-04-21 18:49:25,309 - INFO - STDOUT: [0m23:49:15  Registered adapter: bigquery=1.9.1
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:15  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:49:25,310 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:49:25,310 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:16  Found 7 models, 494 macros
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:16
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:16  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:16
+2025-04-21 18:49:25,310 - INFO - STDOUT: [0m23:49:19  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:19  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:19  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:20  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.41s]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:20  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:20  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.48s]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:21  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.31s]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:22  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.34s]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:22  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:5f1d7b96-7247-47dc-b219-1fd18723ab68&page=queryresults
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24  5 of 7 ERROR creating sql table model bb_design_marts.materialized_pl_budget_blend  [[31mERROR[0m in 1.85s]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24  6 of 7 SKIP relation bb_design_marts.pl_budget_with_comments ................... [[33mSKIP[0m]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24  7 of 7 SKIP relation bb_design_marts.profit_by_month ........................... [[33mSKIP[0m]
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24
+2025-04-21 18:49:25,311 - INFO - STDOUT: [0m23:49:24  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 8.37 seconds (8.37s).
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24    Database Error in model materialized_pl_budget_blend (models/marts/materialized_pl_budget_blend.sql)
+2025-04-21 18:49:25,312 - INFO - STDOUT: SELECT list expression references pl.classification which is neither grouped nor aggregated at [27:9]
+2025-04-21 18:49:25,312 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24
+2025-04-21 18:49:25,312 - INFO - STDOUT: [0m23:49:24  Done. PASS=4 WARN=0 ERROR=1 SKIP=2 TOTAL=7
+2025-04-21 18:49:25,312 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:49:25,312 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-21 18:49:25,312 - ERROR - Failed to run dbt models
+2025-04-21 18:51:42,440 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:51:42,440 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:51:42,440 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:51:42,440 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:51:42,440 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:51:42,440 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:51:42,469 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:51:42,471 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:51:42,471 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:51:42,472 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:51:49,950 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:51:49,956 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:44  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106e942d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106ef1e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106efbf50>]}
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:44  Running with dbt=1.9.3
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:44  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'debug': 'True', 'profiles_dir': '/Users/craigpothier/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1cb4700a-b924-4b45-80b9-2a65a90cebfc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e9930d0>]}
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1cb4700a-b924-4b45-80b9-2a65a90cebfc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1047d4550>]}
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  Registered adapter: bigquery=1.9.1
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+2025-04-21 18:51:49,957 - INFO - STDOUT: STDOUT: [0m23:51:46  Partial parsing: updated file: holistic_money_dw://models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:46  Partial parsing: updated file: holistic_money_dw://models/marts/pl_budget_with_comments.sql
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1cb4700a-b924-4b45-80b9-2a65a90cebfc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ee43390>]}
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1cb4700a-b924-4b45-80b9-2a65a90cebfc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eedc610>]}
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Found 7 models, 494 macros
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1cb4700a-b924-4b45-80b9-2a65a90cebfc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e91f950>]}
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:51:49,958 - INFO - STDOUT: STDOUT: [0m23:51:47  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT:
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT:
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT:
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT:
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: [0m23:51:47  Opening a new connection, currently in state init
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: [0m23:51:48  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:865f7451-db7f-4b21-a6ac-875007b863a6&page=queryresults
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: [0m23:51:49  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:51:49,959 - INFO - STDOUT: STDOUT: [0m23:51:49  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.374443, "process_in_blocks": "0", "process_kernel_time": 0.669457, "process_mem_max_rss": "199929856", "process_out_blocks": "0", "process_user_time": 3.264961}
+2025-04-21 18:51:49,960 - INFO - STDOUT: STDOUT: [0m23:51:49  Command `dbt run-operation` succeeded at 18:51:49.025355 after 4.38 seconds
+2025-04-21 18:51:49,960 - INFO - STDOUT: STDOUT: [0m23:51:49  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:51:49,960 - INFO - STDOUT: STDOUT: [0m23:51:49  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106efb710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106efbe90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102937d50>]}
+2025-04-21 18:51:49,960 - INFO - STDOUT: STDOUT: [0m23:51:49  Flushing usage events
+2025-04-21 18:51:49,960 - INFO - STDOUT: STDOUT: [0m23:51:49  An error was encountered while trying to flush usage events
+2025-04-21 18:51:49,960 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:51:49,960 - INFO - Enabling staging model...
+2025-04-21 18:51:49,961 - INFO - Staging model enabled successfully
+2025-04-21 18:51:49,961 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:51:49,961 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:51:51,811 - INFO - STDOUT: [0m23:51:51  Running with dbt=1.9.3
+2025-04-21 18:52:01,442 - INFO - STDOUT: [0m23:51:53  Registered adapter: bigquery=1.9.1
+2025-04-21 18:52:01,443 - INFO - STDOUT: [0m23:51:53  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:52:01,443 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:52:01,444 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:53  Found 7 models, 494 macros
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:53
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:53  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:53
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:55  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:55  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:55  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:57  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.40s]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:57  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.40s]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:57  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:58  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.13s]
+2025-04-21 18:52:01,444 - INFO - STDOUT: [0m23:51:58  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.07s]
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:51:58  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:e96c645c-818a-42c7-abd1-678219c8e50d&page=queryresults
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  5 of 7 ERROR creating sql table model bb_design_marts.materialized_pl_budget_blend  [[31mERROR[0m in 1.64s]
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  6 of 7 SKIP relation bb_design_marts.pl_budget_with_comments ................... [[33mSKIP[0m]
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  7 of 7 SKIP relation bb_design_marts.profit_by_month ........................... [[33mSKIP[0m]
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 6.92 seconds (6.92s).
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00    Database Error in model materialized_pl_budget_blend (models/marts/materialized_pl_budget_blend.sql)
+2025-04-21 18:52:01,445 - INFO - STDOUT: Name classification not found inside bt at [46:101]
+2025-04-21 18:52:01,445 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00
+2025-04-21 18:52:01,445 - INFO - STDOUT: [0m23:52:00  Done. PASS=4 WARN=0 ERROR=1 SKIP=2 TOTAL=7
+2025-04-21 18:52:01,446 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:52:01,446 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-21 18:52:01,446 - ERROR - Failed to run dbt models
+2025-04-21 18:53:46,871 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:53:46,872 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:53:46,872 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:53:46,872 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:53:46,872 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:53:46,872 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:53:46,900 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:53:46,905 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:53:46,905 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:53:46,906 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:53:54,677 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:53:54,684 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:53:54,684 - INFO - STDOUT: STDOUT: [0m23:53:49  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ba2850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107c02e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107c09c90>]}
+2025-04-21 18:53:54,684 - INFO - STDOUT: STDOUT: [0m23:53:49  Running with dbt=1.9.3
+2025-04-21 18:53:54,684 - INFO - STDOUT: STDOUT: [0m23:53:49  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'True', 'version_check': 'True', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/Users/craigpothier/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:53:54,684 - INFO - STDOUT: STDOUT: [0m23:53:51  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd85814d3-20f5-47f1-92d7-cc04f50323e1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108492d50>]}
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd85814d3-20f5-47f1-92d7-cc04f50323e1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1054b5650>]}
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  Registered adapter: bigquery=1.9.1
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  Partial parsing: updated file: holistic_money_dw://models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:51  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd85814d3-20f5-47f1-92d7-cc04f50323e1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fb206d0>]}
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:52  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:53:54,685 - INFO - STDOUT: STDOUT: [0m23:53:52  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: [0m23:53:52  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd85814d3-20f5-47f1-92d7-cc04f50323e1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f890b10>]}
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: [0m23:53:52  Found 7 models, 494 macros
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: [0m23:53:52  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd85814d3-20f5-47f1-92d7-cc04f50323e1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f694f10>]}
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: [0m23:53:52  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: [0m23:53:52  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT:
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT:
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:53:54,686 - INFO - STDOUT: STDOUT:
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT:
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:52  Opening a new connection, currently in state init
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:52  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:90a4a266-f471-46aa-8390-10fe7bd079e9&page=queryresults
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.483803, "process_in_blocks": "0", "process_kernel_time": 0.726429, "process_mem_max_rss": "200011776", "process_out_blocks": "0", "process_user_time": 3.273633}
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Command `dbt run-operation` succeeded at 18:53:53.764437 after 4.48 seconds
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107c02350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1034d3cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e0aafd0>]}
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:53  Flushing usage events
+2025-04-21 18:53:54,687 - INFO - STDOUT: STDOUT: [0m23:53:54  An error was encountered while trying to flush usage events
+2025-04-21 18:53:54,687 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:53:54,687 - INFO - Enabling staging model...
+2025-04-21 18:53:54,688 - INFO - Staging model enabled successfully
+2025-04-21 18:53:54,688 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:53:54,689 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:53:56,786 - INFO - STDOUT: [0m23:53:56  Running with dbt=1.9.3
+2025-04-21 18:54:07,006 - INFO - STDOUT: [0m23:53:57  Registered adapter: bigquery=1.9.1
+2025-04-21 18:54:07,031 - INFO - STDOUT: [0m23:53:58  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:54:07,032 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:54:07,032 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:54:07,032 - INFO - STDOUT: [0m23:53:58  Found 7 models, 494 macros
+2025-04-21 18:54:07,052 - INFO - STDOUT: [0m23:53:58
+2025-04-21 18:54:07,052 - INFO - STDOUT: [0m23:53:58  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:54:07,053 - INFO - STDOUT: [0m23:53:58
+2025-04-21 18:54:07,053 - INFO - STDOUT: [0m23:54:01  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:54:07,053 - INFO - STDOUT: [0m23:54:01  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:54:07,074 - INFO - STDOUT: [0m23:54:01  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:54:07,074 - INFO - STDOUT: [0m23:54:03  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.40s]
+2025-04-21 18:54:07,075 - INFO - STDOUT: [0m23:54:03  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:54:07,076 - INFO - STDOUT: [0m23:54:03  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.52s]
+2025-04-21 18:54:07,076 - INFO - STDOUT: [0m23:54:04  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.09s]
+2025-04-21 18:54:07,096 - INFO - STDOUT: [0m23:54:04  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 2.81s]
+2025-04-21 18:54:07,096 - INFO - STDOUT: [0m23:54:04  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:54:07,096 - INFO - STDOUT: [0m23:54:06  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:04a6e8f7-758d-4a16-9ef5-459e6d12e2e8&page=queryresults
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06  5 of 7 ERROR creating sql table model bb_design_marts.materialized_pl_budget_blend  [[31mERROR[0m in 1.54s]
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06  6 of 7 SKIP relation bb_design_marts.pl_budget_with_comments ................... [[33mSKIP[0m]
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06  7 of 7 SKIP relation bb_design_marts.profit_by_month ........................... [[33mSKIP[0m]
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 7.65 seconds (7.65s).
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06    Database Error in model materialized_pl_budget_blend (models/marts/materialized_pl_budget_blend.sql)
+2025-04-21 18:54:07,097 - INFO - STDOUT: Queries in UNION ALL have mismatched column count; query 1 has 8 columns, query 2 has 7 columns at [53:5]
+2025-04-21 18:54:07,097 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:54:07,097 - INFO - STDOUT: [0m23:54:06
+2025-04-21 18:54:07,098 - INFO - STDOUT: [0m23:54:06  Done. PASS=4 WARN=0 ERROR=1 SKIP=2 TOTAL=7
+2025-04-21 18:54:07,098 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:54:07,098 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-21 18:54:07,098 - ERROR - Failed to run dbt models
+2025-04-21 18:58:57,895 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:58:57,895 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 18:58:57,896 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 18:58:57,896 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 18:58:57,896 - INFO - Updating dbt profile with correct service account path
+2025-04-21 18:58:57,896 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 18:58:57,928 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 18:58:57,931 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 18:58:57,932 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 18:58:57,932 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 18:59:06,725 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 18:59:06,733 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 18:59:06,733 - INFO - STDOUT: STDOUT: [0m23:59:00  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fb28550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fbac510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fbace50>]}
+2025-04-21 18:59:06,733 - INFO - STDOUT: STDOUT: [0m23:59:00  Running with dbt=1.9.3
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:00  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'debug': 'True', 'profiles_dir': '/Users/craigpothier/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:01  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'abd0ac6f-e55b-43f0-8581-e4c9f91bde4e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1175f8a50>]}
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:01  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'abd0ac6f-e55b-43f0-8581-e4c9f91bde4e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d488550>]}
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:01  Registered adapter: bigquery=1.9.1
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:02  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:02  Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:02  Partial parsing: updated file: holistic_money_dw://models/core/budget_transformed.sql
+2025-04-21 18:59:06,734 - INFO - STDOUT: STDOUT: [0m23:59:02  Partial parsing: updated file: holistic_money_dw://models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'abd0ac6f-e55b-43f0-8581-e4c9f91bde4e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x117a50190>]}
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'abd0ac6f-e55b-43f0-8581-e4c9f91bde4e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1179e9e50>]}
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Found 7 models, 494 macros
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'abd0ac6f-e55b-43f0-8581-e4c9f91bde4e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f9ef490>]}
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT: [0m23:59:02  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT:
+2025-04-21 18:59:06,735 - INFO - STDOUT: STDOUT:
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: );
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT:
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT:
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: [0m23:59:02  Opening a new connection, currently in state init
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: [0m23:59:03  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:43d21452-b913-43b8-9453-9594f41cf103&page=queryresults
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: [0m23:59:04  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: [0m23:59:04  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.6562605, "process_in_blocks": "0", "process_kernel_time": 0.721325, "process_mem_max_rss": "200531968", "process_out_blocks": "0", "process_user_time": 3.347368}
+2025-04-21 18:59:06,736 - INFO - STDOUT: STDOUT: [0m23:59:04  Command `dbt run-operation` succeeded at 18:59:04.754304 after 4.66 seconds
+2025-04-21 18:59:06,737 - INFO - STDOUT: STDOUT: [0m23:59:04  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 18:59:06,737 - INFO - STDOUT: STDOUT: [0m23:59:04  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4b3bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10fb8ff10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x117aa9450>]}
+2025-04-21 18:59:06,737 - INFO - STDOUT: STDOUT: [0m23:59:04  Flushing usage events
+2025-04-21 18:59:06,737 - INFO - STDOUT: STDOUT: [0m23:59:06  An error was encountered while trying to flush usage events
+2025-04-21 18:59:06,737 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 18:59:06,737 - INFO - Enabling staging model...
+2025-04-21 18:59:06,738 - INFO - Staging model enabled successfully
+2025-04-21 18:59:06,738 - INFO - Running dbt models for client bb_design...
+2025-04-21 18:59:06,738 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:59:08,525 - INFO - STDOUT: [0m23:59:08  Running with dbt=1.9.3
+2025-04-21 18:59:17,781 - INFO - STDOUT: [0m23:59:09  Registered adapter: bigquery=1.9.1
+2025-04-21 18:59:17,782 - INFO - STDOUT: [0m23:59:09  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 18:59:17,783 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 18:59:17,783 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:10  Found 7 models, 494 macros
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:10
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:10  Concurrency: 4 threads (target='service_account')
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:10
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:12  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:12  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:12  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:13  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.23s]
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:13  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 18:59:17,783 - INFO - STDOUT: [0m23:59:13  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.55s]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:14  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.25s]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:15  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.15s]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:15  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:1decbb7c-1e72-439f-ad45-0d769ddef7fa&page=queryresults
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  5 of 7 ERROR creating sql table model bb_design_marts.materialized_pl_budget_blend  [[31mERROR[0m in 1.67s]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  6 of 7 SKIP relation bb_design_marts.pl_budget_with_comments ................... [[33mSKIP[0m]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  7 of 7 SKIP relation bb_design_marts.profit_by_month ........................... [[33mSKIP[0m]
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 6.84 seconds (6.84s).
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-21 18:59:17,784 - INFO - STDOUT: [0m23:59:16
+2025-04-21 18:59:17,785 - INFO - STDOUT: [0m23:59:16    Database Error in model materialized_pl_budget_blend (models/marts/materialized_pl_budget_blend.sql)
+2025-04-21 18:59:17,785 - INFO - STDOUT: Name classification not found inside t at [103:11]
+2025-04-21 18:59:17,785 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/marts/materialized_pl_budget_blend.sql
+2025-04-21 18:59:17,785 - INFO - STDOUT: [0m23:59:16
+2025-04-21 18:59:17,785 - INFO - STDOUT: [0m23:59:16  Done. PASS=4 WARN=0 ERROR=1 SKIP=2 TOTAL=7
+2025-04-21 18:59:17,785 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 18:59:17,785 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-21 18:59:17,785 - ERROR - Failed to run dbt models
+2025-04-21 19:02:43,147 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 19:02:43,148 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 19:02:43,148 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 19:02:43,148 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 19:02:43,148 - INFO - Updating dbt profile with correct service account path
+2025-04-21 19:02:43,148 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 19:02:43,177 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 19:02:43,182 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 19:02:43,182 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 19:02:43,182 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 19:02:51,750 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 19:02:51,758 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:45  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aab2dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aad47d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aad5110>]}
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:45  Running with dbt=1.9.3
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:45  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/Users/craigpothier/.dbt', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'debug': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:47  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '04c8f573-96ba-4ac3-93af-c1dd9764bcf4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aad4650>]}
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:47  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '04c8f573-96ba-4ac3-93af-c1dd9764bcf4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108364c90>]}
+2025-04-21 19:02:51,758 - INFO - STDOUT: STDOUT: [0m00:02:47  Registered adapter: bigquery=1.9.1
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Partial parsing enabled, no changes found, skipping parsing
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '04c8f573-96ba-4ac3-93af-c1dd9764bcf4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1124a2f10>]}
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '04c8f573-96ba-4ac3-93af-c1dd9764bcf4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1128840d0>]}
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Found 7 models, 494 macros
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '04c8f573-96ba-4ac3-93af-c1dd9764bcf4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11282fe90>]}
+2025-04-21 19:02:51,759 - INFO - STDOUT: STDOUT: [0m00:02:47  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: [0m00:02:47  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT:
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT:
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: );
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT:
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT:
+2025-04-21 19:02:51,760 - INFO - STDOUT: STDOUT: [0m00:02:47  Opening a new connection, currently in state init
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:49  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:ca46461e-b847-4986-9f0a-0bae51ce8b38&page=queryresults
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 5.38353, "process_in_blocks": "0", "process_kernel_time": 0.760983, "process_mem_max_rss": "196149248", "process_out_blocks": "0", "process_user_time": 3.05236}
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Command `dbt run-operation` succeeded at 19:02:50.745039 after 5.38 seconds
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106377d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112595310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5bd090>]}
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:50  Flushing usage events
+2025-04-21 19:02:51,761 - INFO - STDOUT: STDOUT: [0m00:02:51  An error was encountered while trying to flush usage events
+2025-04-21 19:02:51,761 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 19:02:51,761 - INFO - Enabling staging model...
+2025-04-21 19:02:51,762 - INFO - Staging model enabled successfully
+2025-04-21 19:02:51,762 - INFO - Running dbt models for client bb_design...
+2025-04-21 19:02:51,762 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 19:02:53,582 - INFO - STDOUT: [0m00:02:53  Running with dbt=1.9.3
+2025-04-21 19:03:05,098 - INFO - STDOUT: [0m00:02:54  Registered adapter: bigquery=1.9.1
+2025-04-21 19:03:05,099 - INFO - STDOUT: [0m00:02:54  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 19:03:05,099 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 19:03:05,099 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:55  Found 7 models, 494 macros
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:55
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:55  Concurrency: 4 threads (target='service_account')
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:55
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:57  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:57  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:57  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:58  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.37s]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:58  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:02:58  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.47s]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:03:00  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.41s]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:03:00  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.39s]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:03:00  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 19:03:05,100 - INFO - STDOUT: [0m00:03:03  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:e684df3a-5402-4772-ba3a-bfad916e3e46&page=queryresults
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:03  5 of 7 ERROR creating sql table model bb_design_marts.materialized_pl_budget_blend  [[31mERROR[0m in 3.15s]
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:03  6 of 7 SKIP relation bb_design_marts.pl_budget_with_comments ................... [[33mSKIP[0m]
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:03  7 of 7 SKIP relation bb_design_marts.profit_by_month ........................... [[33mSKIP[0m]
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 8.84 seconds (8.84s).
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04    Database Error in model materialized_pl_budget_blend (models/marts/materialized_pl_budget_blend.sql)
+2025-04-21 19:03:05,101 - INFO - STDOUT: Name classification not found inside t at [103:11]
+2025-04-21 19:03:05,101 - INFO - STDOUT: compiled code at target/run/holistic_money_dw/models/marts/materialized_pl_budget_blend.sql
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04
+2025-04-21 19:03:05,101 - INFO - STDOUT: [0m00:03:04  Done. PASS=4 WARN=0 ERROR=1 SKIP=2 TOTAL=7
+2025-04-21 19:03:05,102 - ERROR - Command failed with exit code 1
+Command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 19:03:05,102 - ERROR - Error running command: Command '['dbt', 'run', '--profiles-dir', '/Users/craigpothier/.dbt', '--target', 'service_account']' returned non-zero exit status 1.
+2025-04-21 19:03:05,102 - ERROR - Failed to run dbt models
+2025-04-21 19:03:48,094 - INFO - Cleaned sheet URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 19:03:48,094 - INFO - Setting up client bb_design in project holistic-money
+2025-04-21 19:03:48,094 - INFO - Working directory: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt
+2025-04-21 19:03:48,094 - INFO - Profile directory: /Users/craigpothier/.dbt
+2025-04-21 19:03:48,094 - INFO - Updating dbt profile with correct service account path
+2025-04-21 19:03:48,094 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/update_profile.py
+2025-04-21 19:03:48,126 - INFO - STDOUT: Updated dbt profile at /Users/craigpothier/.dbt/profiles.yml
+2025-04-21 19:03:48,129 - INFO - STDOUT: Service account keyfile path: /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/credentials/service-account.json
+2025-04-21 19:03:48,129 - INFO - Setting up budget template for client bb_design using debug script...
+2025-04-21 19:03:48,129 - INFO - Running command: python3 /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/debug_dbt.py
+2025-04-21 19:03:55,555 - INFO - STDOUT: Running dbt with URL: https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc
+2025-04-21 19:03:55,562 - INFO - STDOUT: Command: dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug
+2025-04-21 19:03:55,562 - INFO - STDOUT: STDOUT: [0m00:03:50  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111ec6ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111ec6c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111f2bf50>]}
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:50  Running with dbt=1.9.3
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:50  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'True', 'fail_fast': 'False', 'log_path': '/Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/logs', 'version_check': 'True', 'profiles_dir': '/Users/craigpothier/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt run-operation create_external_budget_table --args {"budget_sheet_url": "https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc", "sheet_range": "Budget Summary!A4:AS80"} --profiles-dir /Users/craigpothier/.dbt --target service_account --debug', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:51  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c7f33d94-8952-4833-9822-3af77bb5f88d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119a1d050>]}
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:51  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c7f33d94-8952-4833-9822-3af77bb5f88d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f804290>]}
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:51  Registered adapter: bigquery=1.9.1
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:52  checksum: 8e92b3ea0fe414917d2f373a2310301f234b1fa26a60318ef9f37e3e915fd9e7, vars: {}, profile: , target: service_account, version: 1.9.3
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:52  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:52  Partial parsing enabled, no changes found, skipping parsing
+2025-04-21 19:03:55,563 - INFO - STDOUT: STDOUT: [0m00:03:52  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: There are 1 unused configuration paths:
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: - seeds.holistic_money_dw
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c7f33d94-8952-4833-9822-3af77bb5f88d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119c50450>]}
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Wrote artifact WritableManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/manifest.json
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Wrote artifact SemanticManifest to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/semantic_manifest.json
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c7f33d94-8952-4833-9822-3af77bb5f88d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119897490>]}
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Found 7 models, 494 macros
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c7f33d94-8952-4833-9822-3af77bb5f88d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111a2dbd0>]}
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  Acquiring new bigquery connection 'macro_create_external_budget_table'
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: [0m00:03:52  On macro_create_external_budget_table: /* {"app": "dbt", "dbt_version": "1.9.3", "profile_name": "holistic_money_dw", "target_name": "service_account", "connection_name": "macro_create_external_budget_table"} */
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT:
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT:
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: CREATE OR REPLACE EXTERNAL TABLE `holistic-money.bb_design.budget_template`
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: OPTIONS (
+2025-04-21 19:03:55,564 - INFO - STDOUT: STDOUT: format = 'GOOGLE_SHEETS',
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: uris = ['https://docs.google.com/spreadsheets/d/10-6RkoviIW18nUing4QUoEaTU1vpI7SiJOWkj5y2aNc'],
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: sheet_range = 'Budget Summary!A4:AS80',
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: skip_leading_rows = 1
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: );
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT:
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT:
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:52  Opening a new connection, currently in state init
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:53  BigQuery adapter: https://console.cloud.google.com/bigquery?project=holistic-money&j=bq:US:4c9e0b6b-9e14-4cb8-9128-dbc46fc948e1&page=queryresults
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Wrote artifact RunResultsArtifact to /Users/craigpothier/workspace/holistic_money_dw/holistic_money_dbt/target/run_results.json
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Resource report: {"command_name": "run-operation", "command_success": true, "command_wall_clock_time": 4.3870106, "process_in_blocks": "0", "process_kernel_time": 0.699803, "process_mem_max_rss": "195661824", "process_out_blocks": "0", "process_user_time": 3.123072}
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Command `dbt run-operation` succeeded at 19:03:54.612126 after 4.39 seconds
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Connection 'macro_create_external_budget_table' was properly closed.
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111f2b0d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111f2b850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d967d50>]}
+2025-04-21 19:03:55,565 - INFO - STDOUT: STDOUT: [0m00:03:54  Flushing usage events
+2025-04-21 19:03:55,566 - INFO - STDOUT: STDOUT: [0m00:03:55  An error was encountered while trying to flush usage events
+2025-04-21 19:03:55,566 - INFO - STDOUT: Command finished with return code: 0
+2025-04-21 19:03:55,566 - INFO - Enabling staging model...
+2025-04-21 19:03:55,566 - INFO - Staging model enabled successfully
+2025-04-21 19:03:55,566 - INFO - Running dbt models for client bb_design...
+2025-04-21 19:03:55,567 - INFO - Running command: dbt run --profiles-dir /Users/craigpothier/.dbt --target service_account
+2025-04-21 19:03:57,072 - INFO - STDOUT: [0m00:03:57  Running with dbt=1.9.3
+2025-04-21 19:04:17,684 - INFO - STDOUT: [0m00:03:58  Registered adapter: bigquery=1.9.1
+2025-04-21 19:04:17,684 - INFO - STDOUT: [0m00:03:58  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+2025-04-21 19:04:17,684 - INFO - STDOUT: There are 1 unused configuration paths:
+2025-04-21 19:04:17,684 - INFO - STDOUT: - seeds.holistic_money_dw
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:03:58  Found 7 models, 494 macros
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:03:58
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:03:58  Concurrency: 4 threads (target='service_account')
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:03:58
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:02  1 of 7 START sql table model bb_design_marts.financial_comments ................ [RUN]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:02  2 of 7 START sql view model bb_design_core.p_l_view ............................ [RUN]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:02  3 of 7 START sql view model bb_design_staging.stg_budget_template .............. [RUN]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:03  3 of 7 OK created sql view model bb_design_staging.stg_budget_template ......... [[32mCREATE VIEW (0 processed)[0m in 1.38s]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:03  4 of 7 START sql view model bb_design_core.budget_transformed .................. [RUN]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:03  2 of 7 OK created sql view model bb_design_core.p_l_view ....................... [[32mCREATE VIEW (0 processed)[0m in 1.53s]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:04  4 of 7 OK created sql view model bb_design_core.budget_transformed ............. [[32mCREATE VIEW (0 processed)[0m in 1.20s]
+2025-04-21 19:04:17,685 - INFO - STDOUT: [0m00:04:05  1 of 7 OK created sql table model bb_design_marts.financial_comments ........... [[32mCREATE TABLE (0.0 rows, 0 processed)[0m in 3.34s]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:05  5 of 7 START sql table model bb_design_marts.materialized_pl_budget_blend ...... [RUN]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:12  5 of 7 OK created sql table model bb_design_marts.materialized_pl_budget_blend . [[32mCREATE TABLE (947.0 rows, 338.0 KiB processed)[0m in 7.32s]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:12  6 of 7 START sql view model bb_design_marts.pl_budget_with_comments ............ [RUN]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:14  6 of 7 OK created sql view model bb_design_marts.pl_budget_with_comments ....... [[32mCREATE VIEW (0 processed)[0m in 2.20s]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:14  7 of 7 START sql view model bb_design_marts.profit_by_month .................... [RUN]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16  7 of 7 OK created sql view model bb_design_marts.profit_by_month ............... [[32mCREATE VIEW (0 processed)[0m in 1.49s]
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16  Finished running 2 table models, 5 view models in 0 hours 0 minutes and 17.80 seconds (17.80s).
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16  [32mCompleted successfully[0m
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16
+2025-04-21 19:04:17,686 - INFO - STDOUT: [0m00:04:16  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+2025-04-21 19:04:17,687 - INFO - Client bb_design setup complete!

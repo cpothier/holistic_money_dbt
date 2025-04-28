@@ -23,8 +23,8 @@ for CLIENT in "${CLIENTS[@]}"; do
   export DBT_CLIENT_DATASET=$CLIENT
   export DBT_BIGQUERY_PROJECT=$GCP_PROJECT
   
-  # Run dbt models for this client
-  dbt run --profiles-dir $PROFILES_DIR
+  # Run dbt models for this client with the service_account target
+  dbt run --profiles-dir $PROFILES_DIR --target service_account --target service_account
   
   echo "Completed processing for $CLIENT"
   echo "---------------------------------"
