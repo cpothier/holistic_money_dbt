@@ -15,7 +15,7 @@ push: null
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
 - prefect.deployments.steps.git_clone:
-    repository: git@github.com:cpothier/holistic_money_dbt.git
+    repository: https://github.com/cpothier/holistic_money_dbt.git
     branch: main
 
 # the deployments section allows you to provide configuration for deploying flows
