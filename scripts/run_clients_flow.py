@@ -57,22 +57,19 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
             profiles_dir=profiles_dir,
             dbt_executable_path=dbt_path,
             dbt_cli_profile={
+                "name": "bigquery",
+                "target": "service_account",
+                "target_configs": {
+                    "type": "bigquery",
+                    "method": "service-account",
+                    "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
+                    "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
+                    "threads": 4,
+                    "keyfile": "../credentials/service-account.json",
+                    "timeout_seconds": 300
+                },
                 "config": {
                     "send_anonymous_usage_stats": False
-                },
-                "bigquery": {
-                    "target": "service_account",
-                    "outputs": {
-                        "service_account": {
-                            "type": "bigquery",
-                            "method": "service-account",
-                            "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
-                            "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
-                            "threads": 4,
-                            "keyfile": "../credentials/service-account.json",
-                            "timeout_seconds": 300
-                        }
-                    }
                 }
             }
         )
