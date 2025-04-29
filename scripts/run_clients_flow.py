@@ -2,12 +2,16 @@ from prefect import flow, task, get_run_logger
 from prefect_dbt.cli.commands import DbtCoreOperation
 from prefect.blocks.system import Secret
 from prefect.tasks import task_input_hash
+from prefect_github.repository import GitHubRepository
 import os
 import subprocess
 import shutil
 from typing import List
 from datetime import timedelta
 from pathlib import Path
+
+# Load the GitHub repository block for deployment
+github_repository_block = GitHubRepository.load("holistic-money-dbt")
 
 @task
 def check_dbt_installed():
