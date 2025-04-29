@@ -55,7 +55,26 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
             commands=["dbt run --target service_account"],
             project_dir=dbt_project_dir,
             profiles_dir=profiles_dir,
-            dbt_executable_path=dbt_path
+            dbt_executable_path=dbt_path,
+            dbt_cli_profile={
+                "config": {
+                    "send_anonymous_usage_stats": False
+                },
+                "bigquery": {
+                    "target": "service_account",
+                    "outputs": {
+                        "service_account": {
+                            "type": "bigquery",
+                            "method": "service-account",
+                            "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
+                            "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
+                            "threads": 4,
+                            "keyfile": "../credentials/service-account.json",
+                            "timeout_seconds": 300
+                        }
+                    }
+                }
+            }
         )
         
         # Run the operation
