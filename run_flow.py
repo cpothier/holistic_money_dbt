@@ -4,11 +4,13 @@ import sys
 import importlib.util
 import subprocess
 from pathlib import Path
+from prefect import flow
 
 # Determine the location of the script directory relative to this file
 repo_root = Path(__file__).parent
 scripts_dir = repo_root / "scripts"
 
+@flow(name="Process All Clients")
 def main():
     print(f"Current directory: {os.getcwd()}")
     print(f"Script directory: {scripts_dir}")
