@@ -1,11 +1,33 @@
 from prefect import flow, task, get_run_logger
-from prefect_shell import shell_run_command
+from prefect_dbt.cli.commands import DbtCoreOperation
 from prefect.blocks.system import Secret
 from prefect.tasks import task_input_hash
 import os
+import subprocess
+import shutil
 from typing import List
 from datetime import timedelta
-import asyncio
+from pathlib import Path
+
+@task
+def check_dbt_installed():
+    """Check if dbt is installed and accessible."""
+    logger = get_run_logger()
+    dbt_path = shutil.which("dbt")
+    
+    if not dbt_path:
+        raise RuntimeError("dbt executable not found in PATH. Please install dbt.")
+    
+    logger.info(f"Found dbt at: {dbt_path}")
+    
+    # Run dbt --version to verify installation
+    try:
+        result = subprocess.run(["dbt", "--version"], capture_output=True, text=True)
+        logger.info(f"dbt version info: {result.stdout.strip()}")
+        return dbt_path
+    except Exception as e:
+        logger.error(f"Error verifying dbt installation: {str(e)}")
+        raise
 
 @task(
     retries=2,
@@ -14,7 +36,7 @@ import asyncio
     cache_expiration=timedelta(hours=1),
     persist_result=False
 )
-async def process_client(client: str, gcp_project: str, profiles_dir: str) -> None:
+def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles_dir: str, dbt_path: str) -> None:
     """Process a single client using dbt."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
@@ -24,12 +46,18 @@ async def process_client(client: str, gcp_project: str, profiles_dir: str) -> No
         os.environ["DBT_CLIENT_DATASET"] = client
         os.environ["DBT_BIGQUERY_PROJECT"] = gcp_project
         
-        # Run dbt models for this client
-        result = await shell_run_command(
-            command=f"dbt run --profiles-dir {profiles_dir} --target service_account",
-            return_all=True,
-            stream_level=20  # INFO level logging
+        # Create the operation with executable path - use full 'dbt run' command
+        dbt_op = DbtCoreOperation(
+            commands=["dbt run --target service_account"],
+            project_dir=dbt_project_dir,
+            profiles_dir=profiles_dir,
+            dbt_executable_path=dbt_path
         )
+        
+        # Run the operation
+        logger.info(f"Executing dbt run for client {client}...")
+        result = dbt_op.run()
+        
         logger.info(f"Successfully completed processing for {client}")
         return result
     except Exception as e:
@@ -43,7 +71,7 @@ async def process_client(client: str, gcp_project: str, profiles_dir: str) -> No
     retries=1,
     retry_delay_seconds=300
 )
-async def process_all_clients(
+def process_all_clients(
     clients: List[str] = [
         "golden_hour",
         "austin_lifestyler",
@@ -58,10 +86,24 @@ async def process_all_clients(
     logger = get_run_logger()
     logger.info(f"Starting flow to process {len(clients)} clients")
     
+    # Check dbt installation first
+    dbt_path = check_dbt_installed()
+    
+    # Get the absolute path to the dbt project directory
+    script_dir = Path(__file__).parent.absolute()
+    dbt_project_dir = str(script_dir.parent)
+    logger.info(f"Using dbt project directory: {dbt_project_dir}")
+    
+    # Process clients sequentially
     for client in clients:
-        await process_client(client, gcp_project, profiles_dir)
+        try:
+            process_client(client, gcp_project, dbt_project_dir, profiles_dir, dbt_path)
+        except Exception as e:
+            logger.error(f"Failed to process client {client}: {str(e)}")
+            # Continue processing other clients despite failure
+            continue
     
     logger.info("Completed processing all clients")
 
 if __name__ == "__main__":
-    asyncio.run(process_all_clients()) 
+    process_all_clients() 
