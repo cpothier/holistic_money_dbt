@@ -18,7 +18,7 @@ pull:
     repository: https://github.com/cpothier/holistic_money_dbt.git
     branch: main
 - prefect.deployments.steps.pip_install_requirements:
-    requirements: requirements-flow.txt
+    requirements_file: requirements-flow.txt
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
