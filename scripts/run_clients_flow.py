@@ -50,37 +50,63 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         os.environ["DBT_CLIENT_DATASET"] = client
         os.environ["DBT_BIGQUERY_PROJECT"] = gcp_project
         
-        # Create the operation with executable path - use full 'dbt run' command
-        dbt_op = DbtCoreOperation(
-            commands=["dbt run"],
-            project_dir=dbt_project_dir,
-            profiles_dir=profiles_dir,
-            dbt_executable_path=dbt_path,
-            dbt_cli_profile={
-                "name": "holistic_money_dw",
-                "target": "service_account",
-                "target_configs": {
-                    "type": "bigquery",
-                    "method": "service-account",
-                    "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
-                    "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
-                    "schema": "{{ env_var('DBT_CLIENT_DATASET') }}",
-                    "threads": 4,
-                    "keyfile": "../credentials/service-account.json",
-                    "timeout_seconds": 300
-                },
-                "config": {
-                    "send_anonymous_usage_stats": False
-                }
-            }
-        )
-        
-        # Run the operation
-        logger.info(f"Executing dbt run for client {client}...")
-        result = dbt_op.run()
-        
-        logger.info(f"Successfully completed processing for {client}")
-        return result
+        # Get service account credentials from secret block
+        try:
+            service_account_secret = Secret.load("bigquery-credentials")
+            service_account_json = service_account_secret.get()
+            
+            # Write credentials to a temporary file
+            import tempfile
+            import json
+            
+            temp_creds_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
+            try:
+                with open(temp_creds_file.name, 'w') as f:
+                    json.dump(json.loads(service_account_json), f)
+                
+                logger.info(f"Temporary credentials file created at {temp_creds_file.name}")
+                
+                # Create the operation with executable path - use full 'dbt run' command
+                dbt_op = DbtCoreOperation(
+                    commands=["dbt run"],
+                    project_dir=dbt_project_dir,
+                    profiles_dir=profiles_dir,
+                    dbt_executable_path=dbt_path,
+                    dbt_cli_profile={
+                        "name": "holistic_money_dw",
+                        "target": "service_account",
+                        "target_configs": {
+                            "type": "bigquery",
+                            "method": "service-account",
+                            "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
+                            "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
+                            "schema": "{{ env_var('DBT_CLIENT_DATASET') }}",
+                            "threads": 4,
+                            "keyfile": temp_creds_file.name,
+                            "timeout_seconds": 300
+                        },
+                        "config": {
+                            "send_anonymous_usage_stats": False
+                        }
+                    }
+                )
+                
+                # Run the operation
+                logger.info(f"Executing dbt run for client {client}...")
+                result = dbt_op.run()
+                
+                logger.info(f"Successfully completed processing for {client}")
+                return result
+            finally:
+                # Clean up the temporary file
+                try:
+                    os.unlink(temp_creds_file.name)
+                    logger.info("Temporary credentials file removed")
+                except Exception as e:
+                    logger.warning(f"Failed to remove temporary credentials file: {str(e)}")
+        except Exception as e:
+            logger.error(f"Error with credentials: {str(e)}")
+            raise
     except Exception as e:
         logger.error(f"Error processing client {client}: {str(e)}")
         raise
