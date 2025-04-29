@@ -1,0 +1,12 @@
+name: dbt-flow-deployment
+prefect-version: 3.3.7
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/cpothier/holistic_money_dbt.git
+      branch: main
+build: 
+  - prefect.deployments.steps.pip_install_requirements:
+      requirements_file: scripts/requirements.txt
+      directory: "."
+entrypoint: run_flow.py:main
+push: null 
