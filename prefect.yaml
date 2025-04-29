@@ -17,8 +17,9 @@ pull:
 - prefect.deployments.steps.git_clone:
     repository: https://github.com/cpothier/holistic_money_dbt.git
     branch: main
-- prefect.deployments.steps.pip_install:
-    packages: ["prefect-dbt"]
+- prefect_dbt.deployments.steps.dbt_cli:
+    requires: "prefect-dbt>=0.3.0"
+    command: version
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
