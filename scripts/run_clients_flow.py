@@ -52,12 +52,12 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         
         # Create the operation with executable path - use full 'dbt run' command
         dbt_op = DbtCoreOperation(
-            commands=["dbt run --target service_account"],
+            commands=["dbt run"],
             project_dir=dbt_project_dir,
             profiles_dir=profiles_dir,
             dbt_executable_path=dbt_path,
             dbt_cli_profile={
-                "name": "bigquery",
+                "name": "holistic_money_dw",
                 "target": "service_account",
                 "target_configs": {
                     "type": "bigquery",
