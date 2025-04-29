@@ -64,6 +64,7 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
                     "method": "service-account",
                     "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
                     "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
+                    "schema": "{{ env_var('DBT_CLIENT_DATASET') }}",
                     "threads": 4,
                     "keyfile": "../credentials/service-account.json",
                     "timeout_seconds": 300
