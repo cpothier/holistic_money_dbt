@@ -72,7 +72,10 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         
         # Create the operation with executable path and explicit environment
         dbt_op = DbtCoreOperation(
-            commands=["dbt run --target service_account"], 
+            # Add echo command to debug the environment variable in the subprocess
+            commands=[
+                'echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" && dbt run --target service_account'
+            ],
             project_dir=dbt_project_dir,
             profiles_dir=profiles_dir,
             dbt_executable_path=dbt_path,
