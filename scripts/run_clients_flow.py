@@ -1,6 +1,5 @@
 from prefect import flow, task, get_run_logger
-from prefect_dbt.cli.commands import DbtCoreOperation
-from prefect.blocks.system import Secret
+from prefect.tasks import run_shell_script
 from prefect.tasks import task_input_hash
 from prefect_github.repository import GitHubRepository
 from prefect_gcp.credentials import GcpCredentials
@@ -45,13 +44,14 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
-    """Process client using dbt with dynamically generated profiles.yml file specified via profiles_path."""
+    """Process client using dbt via run_shell_script with a dynamic profiles.yml."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
     temp_profiles_file = None
     profiles_content = None
+    temp_profiles_dir = None
 
     try:
         # Load the GCP credentials block
@@ -86,29 +86,36 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         }
 
         # Create a temporary file to store the dynamic profiles.yml
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml") as f_profiles:
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml", prefix="profiles_") as f_profiles:
             yaml.dump(profiles_content, f_profiles)
             temp_profiles_file = f_profiles.name
-        logger.info(f"Dynamic profiles.yml written to temporary file: {temp_profiles_file}")
+            # Get the directory containing the temp profile file
+            temp_profiles_dir = str(Path(temp_profiles_file).parent)
+        logger.info(f"Dynamic profiles.yml written to: {temp_profiles_file}")
+        logger.info(f"Using temporary profiles directory: {temp_profiles_dir}")
         
-        # Create the operation pointing to the dynamic profile file via profiles_path
-        dbt_op = DbtCoreOperation(
-            commands=["dbt run"], 
-            project_dir=dbt_project_dir,
-            profiles_path=temp_profiles_file, # Use profiles_path with the file
-            target="service_account", # Specify target to use within the profile
-            dbt_executable_path=dbt_path,
-            overwrite_profiles=False # Explicitly False
+        # Construct the shell command
+        # Use the full dbt_path found earlier
+        # Point profiles-dir to the temp directory
+        command = (
+            f'{dbt_path} run --project-dir "{dbt_project_dir}" ' 
+            f'--profiles-dir "{temp_profiles_dir}" ' 
+            f'--target service_account'
         )
-        
-        # Run the operation
-        logger.info(f"Executing dbt run for client {client} using profiles_path='{temp_profiles_file}'...")
-        result = dbt_op.run()
-        
+        logger.info(f"Executing command: {command}")
+
+        # Run the command using run_shell_script
+        result = run_shell_script(command=command, return_all=True)
+        logger.info(f"Shell script output:\n{result}") # Log output for debugging
+
         logger.info(f"Successfully completed processing for {client}")
-        return result
+        # Note: run_shell_script doesn't return structured result like DbtCoreOperation
+        # We might need error handling based on the output/return code if needed.
+        return # Return None or handle result if necessary
+
     except Exception as e:
-        logger.error(f"Error processing client {client}: {str(e)}")
+        # Log the full exception details
+        logger.error(f"Error processing client {client}", exc_info=True)
         raise
     finally:
         # Clean up the temporary files
