@@ -6,8 +6,10 @@
 name: holistic_money_dbt
 prefect-version: 3.3.7
 
-# build section removed - not used by local Process agent
-build: null
+# build section specifies steps to run when building the deployment image/environment
+build:
+- prefect.deployments.steps.pip_install_requirements:
+    requirements_file: scripts/requirements.txt
 
 # push section allows you to manage if and how this project is uploaded to remote locations
 push: null
