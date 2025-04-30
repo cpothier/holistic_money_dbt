@@ -3,6 +3,7 @@ from prefect_dbt.cli.commands import DbtCoreOperation
 from prefect.blocks.system import Secret
 from prefect.tasks import task_input_hash
 from prefect_github.repository import GitHubRepository
+from prefect_gcp import GcpCredentials
 import os
 import subprocess
 import shutil
@@ -50,10 +51,13 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         os.environ["DBT_CLIENT_DATASET"] = client
         os.environ["DBT_BIGQUERY_PROJECT"] = gcp_project
         
-        # Get service account credentials from secret block
+        # Get GCP credentials
         try:
-            service_account_secret = Secret.load("bigquery-credentials")
-            service_account_json = service_account_secret.get()
+            # Load GCP credentials block
+            gcp_credentials = GcpCredentials.load("holistic-money-credentials")
+            
+            # Get the service account info
+            service_account_info = gcp_credentials.service_account_info
             
             # Write credentials to a temporary file
             import tempfile
@@ -62,11 +66,7 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
             temp_creds_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
             try:
                 with open(temp_creds_file.name, 'w') as f:
-                    # service_account_json could be a dict or string, handle both cases
-                    if isinstance(service_account_json, dict):
-                        json.dump(service_account_json, f)
-                    else:
-                        f.write(service_account_json)
+                    json.dump(service_account_info, f)
                 
                 logger.info(f"Temporary credentials file created at {temp_creds_file.name}")
                 
@@ -78,7 +78,7 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
                     dbt_executable_path=dbt_path,
                     dbt_cli_profile={
                         "name": "holistic_money_dw",
-                        "target": "service_account",
+                        "target": "gq_service_account",
                         "target_configs": {
                             "type": "bigquery",
                             "method": "service-account",
