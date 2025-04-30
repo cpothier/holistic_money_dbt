@@ -114,7 +114,6 @@ def process_all_clients(
         "western_holistic_med"
     ],
     gcp_project: str = "holistic-money",
-    profiles_dir: str = "~/.dbt"
 ) -> None:
     """Process all clients using dbt."""
     logger = get_run_logger()
@@ -124,14 +123,16 @@ def process_all_clients(
     dbt_path = check_dbt_installed()
     
     # Get the absolute path to the dbt project directory
+    # This directory contains profiles.yml
     script_dir = Path(__file__).parent.absolute()
     dbt_project_dir = str(script_dir.parent)
-    logger.info(f"Using dbt project directory: {dbt_project_dir}")
+    logger.info(f"Using dbt project directory (and profiles_dir): {dbt_project_dir}")
     
     # Process clients sequentially
     for client in clients:
         try:
-            process_client(client, gcp_project, dbt_project_dir, profiles_dir, dbt_path)
+            # Pass dbt_project_dir as the profiles_dir
+            process_client(client, gcp_project, dbt_project_dir, dbt_project_dir, dbt_path)
         except Exception as e:
             logger.error(f"Failed to process client {client}: {str(e)}")
             # Continue processing other clients despite failure

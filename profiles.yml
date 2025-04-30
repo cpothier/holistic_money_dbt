@@ -14,9 +14,8 @@ holistic_money_dw:
     service_account:
       type: bigquery
       method: service-account
-      project: "holistic-money"
-      dataset: "default_client"
-      keyfile: "credentials/service-account.json"
+      project: "{{ env_var('DBT_BIGQUERY_PROJECT', 'holistic-money') }}"
+      dataset: "{{ env_var('DBT_CLIENT_DATASET', 'default_client') }}"
       threads: 4
       timeout_seconds: 300
       location: US
