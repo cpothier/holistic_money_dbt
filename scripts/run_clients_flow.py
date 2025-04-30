@@ -45,13 +45,12 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
-    """Process a single client using dbt, authenticating via dbt_cli_profile passed to DbtCoreOperation."""
+    """Process a single client using dbt, authenticating via correctly structured dbt_cli_profile."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
-    # dbt_cli_profile_data renamed back, simplified structure
-    target_config_data = None 
+    dbt_cli_profile_data = None 
 
     try:
         # Load the GCP credentials block
@@ -65,34 +64,41 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
             temp_creds_file = f_creds.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
-        # Define the target configuration data structure (flat dictionary)
-        target_config_data = {
-            "type": "bigquery",
-            "method": "service-account",
-            "project": gcp_project,
-            "dataset": client, # Use dataset for schema
-            "schema": client, # Explicitly add schema, same as dataset for BQ
-            "keyfile": temp_creds_file, 
-            "threads": 4,
-            "timeout_seconds": 300,
-            "location": "US",
-            "priority": "interactive"
+        # Define the profile data structure expected by dbt_cli_profile
+        # Using the required keys: name, target, target_configs
+        dbt_cli_profile_data = {
+            "name": "holistic_money_dw", # Profile name (must match dbt_project.yml)
+            "target": "service_account",   # Default target for this profile
+            "target_configs": {           # NOTE: Using 'target_configs', not 'outputs'
+                "service_account": {      # Target name is the key
+                    "type": "bigquery",
+                    "method": "service-account",
+                    "project": gcp_project,
+                    "dataset": client, # Use dataset for schema
+                    # "schema": client, # Schema might be inferred from dataset for BQ
+                    "keyfile": temp_creds_file, 
+                    "threads": 4,
+                    "timeout_seconds": 300,
+                    "location": "US",
+                    "priority": "interactive"
+                }
+            }
         }
-        logger.info("Defined target configuration data structure.")
+        logger.info("Defined nested dbt_cli_profile data structure with target_configs.")
 
         # Create the operation passing the structured profile dictionary
         dbt_op = DbtCoreOperation(
             commands=["dbt run"], 
             project_dir=dbt_project_dir,
-            dbt_cli_profile=target_config_data, # Pass the flat target config dictionary
-            profile="holistic_money_dw", # Specify the profile name from dbt_project.yml
-            target="service_account",   # Specify the target name to use with this config
+            dbt_cli_profile=dbt_cli_profile_data, # Pass the nested dictionary
+            # profile argument removed
+            # target argument removed
             dbt_executable_path=dbt_path,
             overwrite_profiles=False 
         )
         
         # Run the operation
-        logger.info(f"Executing dbt run for client {client} using dbt_cli_profile for target 'service_account'...")
+        logger.info(f"Executing dbt run for client {client} using nested dbt_cli_profile...")
         result = dbt_op.run()
         
         logger.info(f"Successfully completed processing for {client}")
