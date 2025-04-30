@@ -50,8 +50,8 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
-    # temp_profiles_file removed
-    profiles_content = None
+    # profiles_content renamed to dbt_cli_profile_data
+    dbt_cli_profile_data = None
 
     try:
         # Load the GCP credentials block
@@ -65,40 +65,33 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
             temp_creds_file = f_creds.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
-        # Define the dynamic profiles content using the temp creds file path
-        profiles_content = {
-            "holistic_money_dw": { 
-                "target": "service_account",
-                "outputs": {
-                    "service_account": {
-                        "type": "bigquery",
-                        "method": "service-account",
-                        "project": gcp_project,
-                        "dataset": client,
-                        "keyfile": temp_creds_file, 
-                        "threads": 4,
-                        "timeout_seconds": 300,
-                        "location": "US",
-                        "priority": "interactive"
-                    }
+        # Define the profile data structure expected by dbt_cli_profile
+        dbt_cli_profile_data = {
+            "name": "holistic_money_dw", # Profile name (must match dbt_project.yml)
+            "target": "service_account",   # Default target for this profile
+            "target_configs": {           # Corresponds to 'outputs' in profiles.yml
+                "service_account": {      # The actual target configuration
+                    "type": "bigquery",
+                    "method": "service-account",
+                    "project": gcp_project,
+                    "dataset": client,
+                    "keyfile": temp_creds_file, 
+                    "threads": 4,
+                    "timeout_seconds": 300,
+                    "location": "US",
+                    "priority": "interactive"
                 }
             }
         }
-        logger.info("Defined dynamic profile content.")
+        logger.info("Defined dbt_cli_profile data structure.")
 
-        # Remove creation of temporary profiles.yml
-        # Remove determination of temp_profiles_dir
-        
-        # Create the operation passing the profile dictionary directly
+        # Create the operation passing the structured profile dictionary
         dbt_op = DbtCoreOperation(
             commands=["dbt run"], 
             project_dir=dbt_project_dir,
-            # profiles_dir removed
-            # profile removed
-            # target removed
-            dbt_cli_profile=profiles_content, # Pass the dictionary here
+            dbt_cli_profile=dbt_cli_profile_data, # Pass the structured dictionary
             dbt_executable_path=dbt_path,
-            overwrite_profiles=False # Setting to False explicitly, though likely default
+            overwrite_profiles=False 
         )
         
         # Run the operation
