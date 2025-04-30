@@ -3,10 +3,11 @@ from prefect_dbt.cli.commands import DbtCoreOperation
 from prefect.blocks.system import Secret
 from prefect.tasks import task_input_hash
 from prefect_github.repository import GitHubRepository
-from prefect_gcp import GcpCredentials
+from prefect_gcp.credentials import GcpCredentials
 import os
 import subprocess
 import shutil
+import tempfile
 from typing import List
 from datetime import timedelta
 from pathlib import Path
@@ -42,78 +43,58 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles_dir: str, dbt_path: str) -> None:
-    """Process a single client using dbt."""
+    """Process a single client using dbt, authenticating via GcpCredentials block."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
+    gcp_credentials_block = None
+    temp_creds_file = None
+
     try:
-        # Set environment variables
+        # Load the GCP credentials block
+        logger.info("Loading GCP credentials from block 'holistic-money-credentials'...")
+        gcp_credentials_block = GcpCredentials.load("holistic-money-credentials")
+        service_account_info = gcp_credentials_block.service_account_info.get_secret_value()
+
+        # Create a temporary file to store the credentials
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json") as f:
+            f.write(service_account_info)
+            temp_creds_file = f.name
+        logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
+
+        # Set environment variables for dbt
+        # GOOGLE_APPLICATION_CREDENTIALS tells dbt-bigquery where to find the key
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = temp_creds_file
         os.environ["DBT_CLIENT_DATASET"] = client
         os.environ["DBT_BIGQUERY_PROJECT"] = gcp_project
         
-        # Get GCP credentials
-        try:
-            # Load GCP credentials block
-            gcp_credentials = GcpCredentials.load("holistic-money-credentials")
-            
-            # Get the service account info
-            service_account_info = gcp_credentials.service_account_info
-            
-            # Write credentials to a temporary file
-            import tempfile
-            import json
-            
-            temp_creds_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
-            try:
-                with open(temp_creds_file.name, 'w') as f:
-                    json.dump(service_account_info, f)
-                
-                logger.info(f"Temporary credentials file created at {temp_creds_file.name}")
-                
-                # Create the operation with executable path - use full 'dbt run' command
-                dbt_op = DbtCoreOperation(
-                    commands=["dbt run"],
-                    project_dir=dbt_project_dir,
-                    profiles_dir=profiles_dir,
-                    dbt_executable_path=dbt_path,
-                    dbt_cli_profile={
-                        "name": "holistic_money_dw",
-                        "target": "gq_service_account",
-                        "target_configs": {
-                            "type": "bigquery",
-                            "method": "service-account",
-                            "project": "{{ env_var('DBT_BIGQUERY_PROJECT') }}",
-                            "dataset": "{{ env_var('DBT_CLIENT_DATASET') }}",
-                            "schema": "{{ env_var('DBT_CLIENT_DATASET') }}",
-                            "threads": 4,
-                            "keyfile": temp_creds_file.name,
-                            "timeout_seconds": 300
-                        },
-                        "config": {
-                            "send_anonymous_usage_stats": False
-                        }
-                    }
-                )
-                
-                # Run the operation
-                logger.info(f"Executing dbt run for client {client}...")
-                result = dbt_op.run()
-                
-                logger.info(f"Successfully completed processing for {client}")
-                return result
-            finally:
-                # Clean up the temporary file
-                try:
-                    os.unlink(temp_creds_file.name)
-                    logger.info("Temporary credentials file removed")
-                except Exception as e:
-                    logger.warning(f"Failed to remove temporary credentials file: {str(e)}")
-        except Exception as e:
-            logger.error(f"Error with credentials: {str(e)}")
-            raise
+        # Create the operation with executable path - use full 'dbt run' command
+        # Ensure target uses service_account method without keyfile path in profiles.yml
+        dbt_op = DbtCoreOperation(
+            commands=["dbt run --target service_account"], # Ensure target is correct
+            project_dir=dbt_project_dir,
+            profiles_dir=profiles_dir,
+            dbt_executable_path=dbt_path,
+            overwrite_profiles=False
+        )
+        
+        # Run the operation
+        logger.info(f"Executing dbt run for client {client}...")
+        result = dbt_op.run()
+        
+        logger.info(f"Successfully completed processing for {client}")
+        return result
     except Exception as e:
         logger.error(f"Error processing client {client}: {str(e)}")
         raise
+    finally:
+        # Clean up the temporary credentials file
+        if temp_creds_file and os.path.exists(temp_creds_file):
+            logger.info(f"Cleaning up temporary credentials file: {temp_creds_file}")
+            os.remove(temp_creds_file)
+        # Unset the env var? Maybe not necessary as the process ends.
+        # if "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
+        #     del os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 @flow(
     name="Process All Clients",
