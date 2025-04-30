@@ -45,12 +45,12 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
-    """Process a single client using dbt, authenticating via dynamically generated profiles.yml."""
+    """Process a single client using dbt, authenticating via dbt_cli_profile passed to DbtCoreOperation."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
-    temp_profiles_file = None
+    # temp_profiles_file removed
     profiles_content = None
 
     try:
@@ -67,7 +67,7 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
 
         # Define the dynamic profiles content using the temp creds file path
         profiles_content = {
-            "holistic_money_dw": { # Matches the profile name in dbt_project.yml
+            "holistic_money_dw": { 
                 "target": "service_account",
                 "outputs": {
                     "service_account": {
@@ -75,7 +75,7 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
                         "method": "service-account",
                         "project": gcp_project,
                         "dataset": client,
-                        "keyfile": temp_creds_file, # Use the temp creds file path directly
+                        "keyfile": temp_creds_file, 
                         "threads": 4,
                         "timeout_seconds": 300,
                         "location": "US",
@@ -84,29 +84,25 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
                 }
             }
         }
+        logger.info("Defined dynamic profile content.")
 
-        # Create a temporary file to store the dynamic profiles.yml
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml") as f_profiles:
-            yaml.dump(profiles_content, f_profiles)
-            temp_profiles_file = f_profiles.name
-        logger.info(f"Dynamic profiles.yml written to temporary file: {temp_profiles_file}")
-
-        # Determine the directory containing the temporary profiles file
-        temp_profiles_dir = str(Path(temp_profiles_file).parent)
+        # Remove creation of temporary profiles.yml
+        # Remove determination of temp_profiles_dir
         
-        # Create the operation pointing to the dynamic profile
+        # Create the operation passing the profile dictionary directly
         dbt_op = DbtCoreOperation(
-            commands=["dbt run"], # Just run, profile/target set below
+            commands=["dbt run"], 
             project_dir=dbt_project_dir,
-            profiles_dir=temp_profiles_dir, # Point to dir containing temp profiles.yml
-            profile="holistic_money_dw", # Explicitly set profile name
-            target="service_account", # Explicitly set target name
+            # profiles_dir removed
+            # profile removed
+            # target removed
+            dbt_cli_profile=profiles_content, # Pass the dictionary here
             dbt_executable_path=dbt_path,
-            overwrite_profiles=False # Should not be needed as we specify profile/target
+            overwrite_profiles=False # Setting to False explicitly, though likely default
         )
         
         # Run the operation
-        logger.info(f"Executing dbt run for client {client} using dynamic profile...")
+        logger.info(f"Executing dbt run for client {client} using dbt_cli_profile arg...")
         result = dbt_op.run()
         
         logger.info(f"Successfully completed processing for {client}")
@@ -115,13 +111,11 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         logger.error(f"Error processing client {client}: {str(e)}")
         raise
     finally:
-        # Clean up the temporary files
+        # Clean up ONLY the temporary credentials file
         if temp_creds_file and os.path.exists(temp_creds_file):
             logger.info(f"Cleaning up temporary credentials file: {temp_creds_file}")
             os.remove(temp_creds_file)
-        if temp_profiles_file and os.path.exists(temp_profiles_file):
-            logger.info(f"Cleaning up temporary profiles file: {temp_profiles_file}")
-            os.remove(temp_profiles_file)
+        # Remove cleanup for temp_profiles_file
 
 @flow(
     name="Process All Clients",
