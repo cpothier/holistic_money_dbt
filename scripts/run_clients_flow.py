@@ -64,24 +64,24 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
             temp_creds_file = f.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
-        # Set environment variables for dbt
-        # GOOGLE_APPLICATION_CREDENTIALS tells dbt-bigquery where to find the key
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = temp_creds_file
-        os.environ["DBT_CLIENT_DATASET"] = client
-        os.environ["DBT_BIGQUERY_PROJECT"] = gcp_project
+        # Prepare environment variables for dbt subprocess
+        dbt_env = os.environ.copy()
+        dbt_env["GOOGLE_APPLICATION_CREDENTIALS"] = temp_creds_file
+        dbt_env["DBT_CLIENT_DATASET"] = client
+        dbt_env["DBT_BIGQUERY_PROJECT"] = gcp_project
         
-        # Create the operation with executable path - use full 'dbt run' command
-        # Ensure target uses service_account method without keyfile path in profiles.yml
+        # Create the operation with executable path and explicit environment
         dbt_op = DbtCoreOperation(
-            commands=["dbt run --target service_account"], # Ensure target is correct
+            commands=["dbt run --target service_account"], 
             project_dir=dbt_project_dir,
             profiles_dir=profiles_dir,
             dbt_executable_path=dbt_path,
-            overwrite_profiles=False
+            overwrite_profiles=False,
+            env=dbt_env # Pass the modified environment
         )
         
         # Run the operation
-        logger.info(f"Executing dbt run for client {client}...")
+        logger.info(f"Executing dbt run for client {client} with explicit env...")
         result = dbt_op.run()
         
         logger.info(f"Successfully completed processing for {client}")
