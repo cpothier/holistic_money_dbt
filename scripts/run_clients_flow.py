@@ -45,12 +45,13 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
-    """Process a single client using dbt, authenticating via correctly structured dbt_cli_profile."""
+    """Process client using dbt with dynamically generated profiles.yml file specified via profiles_path."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
-    dbt_cli_profile_data = None 
+    temp_profiles_file = None
+    profiles_content = None
 
     try:
         # Load the GCP credentials block
@@ -64,41 +65,44 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
             temp_creds_file = f_creds.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
-        # Define the profile data structure expected by dbt_cli_profile
-        # Using the required keys: name, target, target_configs
-        dbt_cli_profile_data = {
-            "name": "holistic_money_dw", # Profile name (must match dbt_project.yml)
-            "target": "service_account",   # Default target for this profile
-            "target_configs": {           # NOTE: Using 'target_configs', not 'outputs'
-                "service_account": {      # Target name is the key
-                    "type": "bigquery",
-                    "method": "service-account",
-                    "project": gcp_project,
-                    "dataset": client, # Use dataset for schema
-                    # "schema": client, # Schema might be inferred from dataset for BQ
-                    "keyfile": temp_creds_file, 
-                    "threads": 4,
-                    "timeout_seconds": 300,
-                    "location": "US",
-                    "priority": "interactive"
+        # Define the standard profiles.yml content using the temp creds file path
+        profiles_content = {
+            "holistic_money_dw": { # Matches the profile name in dbt_project.yml
+                "target": "service_account",
+                "outputs": {
+                    "service_account": {
+                        "type": "bigquery",
+                        "method": "service-account",
+                        "project": gcp_project,
+                        "dataset": client,
+                        "keyfile": temp_creds_file, # Use the temp creds file path directly
+                        "threads": 4,
+                        "timeout_seconds": 300,
+                        "location": "US",
+                        "priority": "interactive"
+                    }
                 }
             }
         }
-        logger.info("Defined nested dbt_cli_profile data structure with target_configs.")
 
-        # Create the operation passing the structured profile dictionary
+        # Create a temporary file to store the dynamic profiles.yml
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml") as f_profiles:
+            yaml.dump(profiles_content, f_profiles)
+            temp_profiles_file = f_profiles.name
+        logger.info(f"Dynamic profiles.yml written to temporary file: {temp_profiles_file}")
+        
+        # Create the operation pointing to the dynamic profile file via profiles_path
         dbt_op = DbtCoreOperation(
             commands=["dbt run"], 
             project_dir=dbt_project_dir,
-            dbt_cli_profile=dbt_cli_profile_data, # Pass the nested dictionary
-            # profile argument removed
-            # target argument removed
+            profiles_path=temp_profiles_file, # Use profiles_path with the file
+            target="service_account", # Specify target to use within the profile
             dbt_executable_path=dbt_path,
-            overwrite_profiles=False 
+            overwrite_profiles=False # Explicitly False
         )
         
         # Run the operation
-        logger.info(f"Executing dbt run for client {client} using nested dbt_cli_profile...")
+        logger.info(f"Executing dbt run for client {client} using profiles_path='{temp_profiles_file}'...")
         result = dbt_op.run()
         
         logger.info(f"Successfully completed processing for {client}")
@@ -107,11 +111,13 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         logger.error(f"Error processing client {client}: {str(e)}")
         raise
     finally:
-        # Clean up ONLY the temporary credentials file
+        # Clean up the temporary files
         if temp_creds_file and os.path.exists(temp_creds_file):
             logger.info(f"Cleaning up temporary credentials file: {temp_creds_file}")
             os.remove(temp_creds_file)
-        # Remove cleanup for temp_profiles_file
+        if temp_profiles_file and os.path.exists(temp_profiles_file):
+            logger.info(f"Cleaning up temporary profiles file: {temp_profiles_file}")
+            os.remove(temp_profiles_file)
 
 @flow(
     name="Process All Clients",
