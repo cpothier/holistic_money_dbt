@@ -62,8 +62,11 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
             temp_creds_file = tempfile.NamedTemporaryFile(delete=False, suffix='.json')
             try:
                 with open(temp_creds_file.name, 'w') as f:
-                    # The service_account_json is already a JSON string, no need to parse it
-                    f.write(service_account_json)
+                    # service_account_json could be a dict or string, handle both cases
+                    if isinstance(service_account_json, dict):
+                        json.dump(service_account_json, f)
+                    else:
+                        f.write(service_account_json)
                 
                 logger.info(f"Temporary credentials file created at {temp_creds_file.name}")
                 
