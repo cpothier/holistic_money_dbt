@@ -11,15 +11,7 @@ holistic_money_dw:
       location: US
       priority: interactive
       
-    service_account:
-      type: bigquery
-      method: service-account
-      project: "{{ env_var('DBT_BIGQUERY_PROJECT', 'holistic-money') }}"
-      dataset: "{{ env_var('DBT_CLIENT_DATASET', 'default_client') }}"
-      threads: 4
-      timeout_seconds: 300
-      location: US
-      priority: interactive
+    # Service account target removed - will be generated dynamically in Prefect flow
 
     # 2. Application Default Credentials (for gcloud)
     #    - Install Google Cloud SDK
@@ -43,9 +35,7 @@ holistic_money_dw:
 #    - Use the 'dev' profile
 #
 # 2. Service Account (Automated):
-#    - Create service account with BigQuery Admin role
-#    - Download JSON key file
-#    - Use the 'service_account' profile
+#    - Will be handled dynamically by the Prefect flow.
 #
 # 3. Application Default (gcloud):
 #    - Install Google Cloud SDK

@@ -9,6 +9,7 @@ import subprocess
 import shutil
 import tempfile
 import json
+import yaml
 from typing import List
 from datetime import timedelta
 from pathlib import Path
@@ -43,13 +44,14 @@ def check_dbt_installed():
     cache_expiration=timedelta(hours=1),
     persist_result=False
 )
-def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles_dir: str, dbt_path: str) -> None:
-    """Process a single client using dbt, authenticating via GcpCredentials block."""
+def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
+    """Process a single client using dbt, authenticating via dynamically generated profiles.yml."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
-    gcp_credentials_block = None
     temp_creds_file = None
+    temp_profiles_file = None
+    profiles_content = None
 
     try:
         # Load the GCP credentials block
@@ -57,34 +59,54 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         gcp_credentials_block = GcpCredentials.load("holistic-money-credentials")
         service_account_info = gcp_credentials_block.service_account_info.get_secret_value()
 
-        # Create a temporary file to store the credentials
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json") as f:
-            # Convert the dict to a JSON string before writing
-            f.write(json.dumps(service_account_info))
-            temp_creds_file = f.name
+        # Create a temporary file to store the credentials JSON
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json") as f_creds:
+            f_creds.write(json.dumps(service_account_info))
+            temp_creds_file = f_creds.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
-        # Prepare environment variables for dbt subprocess
-        dbt_env = os.environ.copy()
-        dbt_env["GOOGLE_APPLICATION_CREDENTIALS"] = temp_creds_file
-        dbt_env["DBT_CLIENT_DATASET"] = client
-        dbt_env["DBT_BIGQUERY_PROJECT"] = gcp_project
+        # Define the dynamic profiles content using the temp creds file path
+        profiles_content = {
+            "holistic_money_dw": { # Matches the profile name in dbt_project.yml
+                "target": "service_account",
+                "outputs": {
+                    "service_account": {
+                        "type": "bigquery",
+                        "method": "service-account",
+                        "project": gcp_project,
+                        "dataset": client,
+                        "keyfile": temp_creds_file, # Use the temp creds file path directly
+                        "threads": 4,
+                        "timeout_seconds": 300,
+                        "location": "US",
+                        "priority": "interactive"
+                    }
+                }
+            }
+        }
+
+        # Create a temporary file to store the dynamic profiles.yml
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml") as f_profiles:
+            yaml.dump(profiles_content, f_profiles)
+            temp_profiles_file = f_profiles.name
+        logger.info(f"Dynamic profiles.yml written to temporary file: {temp_profiles_file}")
+
+        # Determine the directory containing the temporary profiles file
+        temp_profiles_dir = str(Path(temp_profiles_file).parent)
         
-        # Create the operation with executable path and explicit environment
+        # Create the operation pointing to the dynamic profile
         dbt_op = DbtCoreOperation(
-            # Add echo command to debug the environment variable in the subprocess
-            commands=[
-                'echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" && dbt run --target service_account'
-            ],
+            commands=["dbt run"], # Just run, profile/target set below
             project_dir=dbt_project_dir,
-            profiles_dir=profiles_dir,
+            profiles_dir=temp_profiles_dir, # Point to dir containing temp profiles.yml
+            profile="holistic_money_dw", # Explicitly set profile name
+            target="service_account", # Explicitly set target name
             dbt_executable_path=dbt_path,
-            overwrite_profiles=False,
-            env=dbt_env # Pass the modified environment
+            overwrite_profiles=False # Should not be needed as we specify profile/target
         )
         
         # Run the operation
-        logger.info(f"Executing dbt run for client {client} with explicit env...")
+        logger.info(f"Executing dbt run for client {client} using dynamic profile...")
         result = dbt_op.run()
         
         logger.info(f"Successfully completed processing for {client}")
@@ -93,18 +115,18 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
         logger.error(f"Error processing client {client}: {str(e)}")
         raise
     finally:
-        # Clean up the temporary credentials file
+        # Clean up the temporary files
         if temp_creds_file and os.path.exists(temp_creds_file):
             logger.info(f"Cleaning up temporary credentials file: {temp_creds_file}")
             os.remove(temp_creds_file)
-        # Unset the env var? Maybe not necessary as the process ends.
-        # if "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
-        #     del os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+        if temp_profiles_file and os.path.exists(temp_profiles_file):
+            logger.info(f"Cleaning up temporary profiles file: {temp_profiles_file}")
+            os.remove(temp_profiles_file)
 
 @flow(
     name="Process All Clients",
     description="Process all clients using dbt",
-    version="1.0.0",
+    version="1.1.0",
     retries=1,
     retry_delay_seconds=300
 )
@@ -125,17 +147,16 @@ def process_all_clients(
     # Check dbt installation first
     dbt_path = check_dbt_installed()
     
-    # Get the absolute path to the dbt project directory
-    # This directory contains profiles.yml
+    # Get the absolute path to the dbt project directory (contains dbt_project.yml)
     script_dir = Path(__file__).parent.absolute()
     dbt_project_dir = str(script_dir.parent)
-    logger.info(f"Using dbt project directory (and profiles_dir): {dbt_project_dir}")
+    logger.info(f"Using dbt project directory: {dbt_project_dir}")
     
     # Process clients sequentially
     for client in clients:
         try:
-            # Pass dbt_project_dir as the profiles_dir
-            process_client(client, gcp_project, dbt_project_dir, dbt_project_dir, dbt_path)
+            # Pass only needed params - profiles_dir removed
+            process_client(client, gcp_project, dbt_project_dir, dbt_path)
         except Exception as e:
             logger.error(f"Failed to process client {client}: {str(e)}")
             # Continue processing other clients despite failure
