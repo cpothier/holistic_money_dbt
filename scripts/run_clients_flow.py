@@ -1,5 +1,5 @@
 from prefect import flow, task, get_run_logger
-from prefect_shell import run_shell_script
+from prefect_shell.tasks import run_shell_script
 from prefect.tasks import task_input_hash
 from prefect_github.repository import GitHubRepository
 from prefect_gcp.credentials import GcpCredentials
