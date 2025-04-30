@@ -8,9 +8,12 @@ prefect-version: 3.3.7
 
 # build section specifies steps to run when building the deployment image/environment
 build:
-- prefect.deployments.steps.pip_install_requirements:
-    requirements_file: scripts/requirements.txt # Use the requirements file
-    # directory: . # Assuming prefect.yaml is in holistic_money_dbt root
+# - prefect.deployments.steps.pip_install_requirements:
+#     requirements_file: scripts/requirements.txt
+#     directory: . # Explicitly set directory relative to prefect.yaml
+- prefect.deployments.steps.run_shell_script: # Use a simple echo command for testing
+    script: echo "Build step check: Running pip install..." && pip install -r scripts/requirements.txt
+    # We still try to install, but the echo gives us a log marker
 
 # push section allows you to manage if and how this project is uploaded to remote locations
 push: null
