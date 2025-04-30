@@ -7,9 +7,7 @@ name: holistic_money_dbt
 prefect-version: 3.3.7
 
 # build section specifies steps to run when building the deployment image/environment
-build:
-- prefect.deployments.steps.pip_install_requirements:
-    requirements_file: scripts/requirements.txt
+build: null
 
 # push section allows you to manage if and how this project is uploaded to remote locations
 push: null
@@ -19,6 +17,8 @@ pull:
 - prefect.deployments.steps.git_clone:
     repository: https://github.com/cpothier/holistic_money_dbt.git
     branch: main
+- prefect.deployments.steps.pip_install_requirements:
+    requirements_file: scripts/requirements.txt
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
