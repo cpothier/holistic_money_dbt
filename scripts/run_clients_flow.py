@@ -1,8 +1,8 @@
 from prefect import flow, task, get_run_logger
-from prefect_shell.tasks import run_shell_script
 from prefect.tasks import task_input_hash
 from prefect_github.repository import GitHubRepository
 from prefect_gcp.credentials import GcpCredentials
+from prefect_shell import ShellOperation
 import os
 import subprocess
 import shutil
@@ -44,7 +44,7 @@ def check_dbt_installed():
     persist_result=False
 )
 def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path: str) -> None:
-    """Process client using dbt via run_shell_script with a dynamic profiles.yml."""
+    """Process client using dbt via prefect_shell with a dynamic profiles.yml."""
     logger = get_run_logger()
     logger.info(f"Starting processing for client: {client}")
     
@@ -94,24 +94,20 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         logger.info(f"Dynamic profiles.yml written to: {temp_profiles_file}")
         logger.info(f"Using temporary profiles directory: {temp_profiles_dir}")
         
-        # Construct the shell command
-        # Use the full dbt_path found earlier
-        # Point profiles-dir to the temp directory
-        command = (
-            f'{dbt_path} run --project-dir "{dbt_project_dir}" ' 
-            f'--profiles-dir "{temp_profiles_dir}" ' 
-            f'--target service_account'
-        )
+        # Construct the shell command for ShellOperation
+        command = f'{dbt_path} run --project-dir "{dbt_project_dir}" --profiles-dir "{temp_profiles_dir}" --target service_account'
         logger.info(f"Executing command: {command}")
 
-        # Run the command using run_shell_script
-        result = run_shell_script(command=command, return_all=True)
-        logger.info(f"Shell script output:\n{result}") # Log output for debugging
+        # Run the command using ShellOperation
+        shell_op = ShellOperation(
+            commands=[command],
+            return_all=True
+        )
+        result = shell_op.run()
+        logger.info(f"Shell operation output:\n{result}")
 
         logger.info(f"Successfully completed processing for {client}")
-        # Note: run_shell_script doesn't return structured result like DbtCoreOperation
-        # We might need error handling based on the output/return code if needed.
-        return # Return None or handle result if necessary
+        return result
 
     except Exception as e:
         # Log the full exception details
