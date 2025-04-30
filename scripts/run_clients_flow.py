@@ -8,6 +8,7 @@ import os
 import subprocess
 import shutil
 import tempfile
+import json
 from typing import List
 from datetime import timedelta
 from pathlib import Path
@@ -58,7 +59,8 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, profiles
 
         # Create a temporary file to store the credentials
         with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json") as f:
-            f.write(service_account_info)
+            # Convert the dict to a JSON string before writing
+            f.write(json.dumps(service_account_info))
             temp_creds_file = f.name
         logger.info(f"GCP credentials written to temporary file: {temp_creds_file}")
 
