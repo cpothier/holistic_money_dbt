@@ -21,12 +21,12 @@ pull:
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: DBT Installation Deployment
+- name: DBT Installation Deployment  # Back to original name
   version: null
   tags: []
   concurrency_limit: null
   description: null
-  entrypoint: scripts/run_clients_flow.py:process_all_clients
+  entrypoint: scripts/run_clients_flow.py:process_all_clients  # Back to original entrypoint
   parameters: {}
   work_pool:
     name: default-work-pool

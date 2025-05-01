@@ -49,8 +49,6 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
     logger.info(f"Starting processing for client: {client}")
     
     temp_creds_file = None
-    temp_profiles_file = None
-    profiles_content = None
     temp_profiles_dir = None
 
     try:
@@ -85,23 +83,34 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
             }
         }
 
-        # Create a temporary file to store the dynamic profiles.yml
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".yml", prefix="profiles_") as f_profiles:
-            yaml.dump(profiles_content, f_profiles)
-            temp_profiles_file = f_profiles.name
-            # Get the directory containing the temp profile file
-            temp_profiles_dir = str(Path(temp_profiles_file).parent)
-        logger.info(f"Dynamic profiles.yml written to: {temp_profiles_file}")
-        logger.info(f"Using temporary profiles directory: {temp_profiles_dir}")
+        # Create a temporary directory to store profiles.yml
+        temp_profiles_dir = tempfile.mkdtemp(prefix="dbt_profiles_")
+        profiles_file_path = os.path.join(temp_profiles_dir, "profiles.yml")
+        
+        # Write profiles.yml file with the proper name
+        with open(profiles_file_path, "w") as f_profiles:
+            yaml.safe_dump(profiles_content, f_profiles, default_flow_style=False)
+            
+        logger.info(f"Created profiles.yml at: {profiles_file_path}")
+        logger.info(f"Using profiles directory: {temp_profiles_dir}")
+        
+        # Debug: Print file contents and verify it exists
+        logger.info(f"Verifying profiles.yml exists: {os.path.exists(profiles_file_path)}")
+        with open(profiles_file_path, "r") as f:
+            logger.info(f"Profiles.yml content preview: {f.read()[:500]}")
+        
+        # List directory contents to verify
+        logger.info(f"Directory contents of {temp_profiles_dir}: {os.listdir(temp_profiles_dir)}")
         
         # Construct the shell command for ShellOperation
-        command = f'{dbt_path} run --project-dir "{dbt_project_dir}" --profiles-dir "{temp_profiles_dir}" --target service_account'
+        command = f'{dbt_path} run --project-dir "{dbt_project_dir}" --profiles-dir "{temp_profiles_dir}" --target service_account --debug'
         logger.info(f"Executing command: {command}")
 
         # Run the command using ShellOperation
         shell_op = ShellOperation(
             commands=[command],
-            return_all=True
+            return_all=True,
+            stream_output=True  # Stream output in real-time
         )
         result = shell_op.run()
         logger.info(f"Shell operation output:\n{result}")
@@ -118,9 +127,9 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         if temp_creds_file and os.path.exists(temp_creds_file):
             logger.info(f"Cleaning up temporary credentials file: {temp_creds_file}")
             os.remove(temp_creds_file)
-        if temp_profiles_file and os.path.exists(temp_profiles_file):
-            logger.info(f"Cleaning up temporary profiles file: {temp_profiles_file}")
-            os.remove(temp_profiles_file)
+        if temp_profiles_dir and os.path.exists(temp_profiles_dir):
+            logger.info(f"Cleaning up temporary profiles directory: {temp_profiles_dir}")
+            shutil.rmtree(temp_profiles_dir)
 
 @flow(
     name="Process All Clients",
