@@ -32,8 +32,6 @@ deployments:
     name: default-work-pool
     work_queue_name: null
     job_variables:
-      env:
-        DBT_BIGQUERY_PROJECT: holistic-money
       pip_packages:
         - "prefect>=3.3.0"
         - "prefect-dbt>=0.6.0"

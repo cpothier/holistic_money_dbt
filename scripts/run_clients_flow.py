@@ -110,7 +110,11 @@ def process_client(client: str, gcp_project: str, dbt_project_dir: str, dbt_path
         shell_op = ShellOperation(
             commands=[command],
             return_all=True,
-            stream_output=True  # Stream output in real-time
+            stream_output=True,
+            env={
+                "DBT_BIGQUERY_PROJECT": gcp_project,   # already set
+                "DBT_CLIENT_DATASET": client,          # 👈 add this
+            }
         )
         result = shell_op.run()
         logger.info(f"Shell operation output:\n{result}")
